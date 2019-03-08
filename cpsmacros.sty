@@ -1,0 +1,296 @@
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+
+\RequirePackage{amsthm}
+\RequirePackage{amstext}
+\RequirePackage{amssymb}
+\RequirePackage{latexsym}
+
+\RequirePackage{graphicx}
+
+}
+
+% Robustness
+\def\Wn{\, \Wc} % the unless temp operator
+\def\mmodels{\mathrel|\joinrel\equiv}
+\def\dle{[\![} \def\dri{]\!]} % double-brace
+\def\dla{\langle \!\langle} \def\dra{\rangle\!\rangle} % double-angles
+\def\Un{\, \Uc} % the until temp operator
+\def\rUn{\, \overline{\Uc}} % the restricted until temp operator
+\def\Rl{\, \Rc} % the release temp operator
+\def\rRl{\overline{\Rc}} % the restricted release temp operator
+\newcommand{\Omap}{\Pc(\hsSet)^{AP}}
+
+\newcommand{\wnext}{{{\sim}{\mkern-16mu}}{\bigcirc}} % weak next
+
+% Sets
+\newcommand \reals \Re
+\newcommand \preals {\Re_+}
+\def\CoRe{\overline{\reals}}
+\newcommand{\unsafe}{\mathcal{U}}
+\newcommand{\hunsafe}{H_\unsafe}
+\def\CoRe{\overline{\reals}}
+\newcommand \copreals {\CoRe_+}
+\newcommand \extreals {\ensuremath \mathcal{R}_{+}}
+\newcommand \lin[1]{\mathit{Lin}(#1)}
+\newcommand \aff[1]{\mathit{Aff}(#1)}
+
+
+% Distances
+\newcommand{\pr}{\mbox{pr}}
+\newcommand \GDF {\mathbf{d_h}}
+\newcommand \GDFzero {\mathbf{d_h^0}}
+\newcommand \dhinf {d_h^{\infty}}
+\newcommand \NeighTo[1] {\mathcal{N_{#1}}}
+\newcommand \NeighFrom[1] {\mathcal{B_{#1}}}
+\newcommand \dist[1] {\mathbf{dist}_{#1}}
+\newcommand \Dist[1] {\mathbf{Dist}_{#1}}
+\newcommand \genMet {\mathbf{d}}
+
+% Systems theory
+\newcommand \gentraj {\mathbf{\genOutPt}}
+\newcommand \genOutPt {y} 
+\newcommand \Sys {\Sigma}
+\newcommand \SysFun {\Delta}
+\newcommand \SubSysFun {\mathbf{D}}
+\newcommand \TDom {T}
+\newcommand \inpSpace {\mathfrak{U}} 
+\newcommand \inpSig {\mathfrak{u}}
+\newcommand \InpSig {u}
+\newcommand \inpSet {U}
+\newcommand \inpPt {u}
+\newcommand \met {g}
+\newcommand \stSet {X}
+\newcommand \stPt {x}
+\newcommand \sttraj {\mathbf{\stPt}}
+\newcommand \outSet {Y} 
+\newcommand \outPt {y}
+\newcommand \outtraj {\mathbf{\outPt}}
+\newcommand \hsPt {\eta}
+\newcommand \hsSet {H}
+\newcommand \hstraj {\mathbf{\eta}}
+\newcommand \hoPt {\outPt}
+\newcommand \hotraj \outtraj
+\newcommand \hoSet \outSet
+\newcommand \hoSpace {\mathfrak{Y}}
+\newcommand \mode \ell
+\newcommand \modetraj {\mathbf{\mode}}
+\newcommand \modeSet L
+\newcommand \Shift {\mathcal{S}}
+\newcommand \graphH {\mathcal{G}}
+\newcommand \powerset {\mathcal{P}}
+\newcommand \genSS {X}
+\newcommand \genInpSet {\mathbf{U}} 
+\newcommand \gensspt {x}
+\newcommand \traj {s}
+\newcommand \genOut {Y} 
+
+\newcommand \genPS {P}
+\newcommand \genpspt {p}
+
+% Hybrid Automata
+\newcommand \HA {\mathcal{H}}
+\newcommand \Next {\mathbf{Nxt}}
+\newcommand \GuardH {\mathbf{G}}
+\newcommand \Guard {\mathbf{G}^t}
+\newcommand \Trans {\rightarrow}
+\newcommand \Inv {\mathbf{I}}
+\newcommand \Field {\mathbf{F}}
+\newcommand \Inp {U}
+\newcommand \loc {\ell}
+\newcommand \Locs{L}
+% \newcommand \Reset {\mathbf{R}}
+
+% Time domains
+\newcommand \timedom N
+\newcommand \tstmpSet {|\timedom|^m_<}
+\newcommand \htstmp \sigma
+\newcommand \tstmp \mu
+\newcommand \simdom {{[0,T]}}
+
+% Conformance
+\newcommand \Model {\mathcal{M}}
+\newcommand \Impl  {\mathcal{I}}
+\newcommand \CTD {[0,T]}
+\newcommand \DTD {\{0,\ldots,J\}}
+\newcommand \HTD {\CTD \times \DTD}
+\newcommand{\dothis}[1]{\colorbox{yellow}{\textcolor{red}{@TODO: #1 \\}}}
+\newcommand{\teps}{(\tau,\varepsilon)}
+\newcommand{\TJte}{(T, J, (\tau,\varepsilon))}
+\newcommand{\tec}{$\TJte$-closeness}
+\newcommand{\tvec}{\mathbf{s}}
+\newcommand{\tint}{\mathds{I}}  % time interval
+\newcommand{\Sig}{\outSet^{[0,T]}}
+\newcommand{\teclose}{\approx_{\teps}}
+\newcommand{\teapx}{\preceq_{\tau,\varepsilon}}
+\newcommand{\ret}{\mathfrak{r}}
+
+\newcommand \behavior {\mathcal{B}}
+\def\dle{[\![} \def\dri{]\!]} % double-brace
+\newcommand \abstractor {\sqcup}
+\newcommand \bigabstractor {\bigsqcup}
+\newcommand \abstractand {\sqcap}
+\newcommand \bigabstractand {\bigsqcap}
+\newcommand \tupleof[1] { \left\langle #1 \right \rangle}
+\newcommand \formula \varphi
+
+
+
+\newcommand{\argmin}{\text{argmin}}
+\newcommand{\argmax}{\text{argmax}}
+
+\newcommand{\Ce}{\mathbb{C}}
+\newcommand{\Be}{\mathbb{B}}
+\newcommand{\Ee}{\mathbb{E}}
+\newcommand{\Fe}{\mathbb{F}}
+\newcommand{\Me}{\mathbb{M}}
+\newcommand{\Ne}{\mathbb{N}}
+\newcommand{\Oe}{\mathbb{O}}
+\newcommand{\Pe}{\mathbb{P}}
+\newcommand{\Qe}{\mathbb{Q}}
+\renewcommand{\Re}{\mathbb{R}}
+\newcommand{\Se}{\mathbb{S}}
+\newcommand{\Te}{\mathbb{T}}
+\newcommand{\Ze}{\mathbb{Z}}
+\newcommand{\Ve}{\mathbb{V}}
+\newcommand{\Xe}{\mathbb{X}}
+
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\Bc}{\mathcal{B}}
+\newcommand{\Dc}{\mathcal{D}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Ec}{\mathcal{E}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Kc}{\mathcal{K}}
+\newcommand{\Lc}{\mathcal{L}}
+\newcommand{\Nc}{\mathcal{N}}
+\newcommand{\Oc}{\mathcal{O}}
+\newcommand{\Pc}{\mathcal{P}}
+\newcommand{\Qc}{\mathcal{Q}}
+\newcommand{\Rc}{\mathcal{R}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Uc}{\mathcal{U}}
+\newcommand{\Vc}{\mathcal{V}}
+\newcommand{\Wc}{\mathcal{W}}
+\newcommand{\Zc}{\mathcal{Z}}
+% \newcommand{\Xc}{\mathcal{X}}
+
+\newcommand{\Br}{\mathfrak{B}}
+\newcommand{\Fr}{\mathfrak{F}}
+\newcommand{\Gr}{\mathfrak{G}}
+\newcommand{\Ir}{\mathfrak{I}}
+\newcommand{\Kr}{\mathfrak{K}}
+\newcommand{\Lr}{\mathfrak{L}}
+\newcommand{\Nr}{\mathfrak{N}}
+\newcommand{\Rr}{\mathfrak{R}}
+\newcommand{\Sr}{\mathfrak{S}}
+\newcommand{\Tr}{\mathfrak{T}}
+\newcommand{\Ur}{\mathfrak{U}}
+\newcommand{\Xr}{\mathfrak{X}}
+
+\newcommand{\Tt}{\mathbb{T}}
+
+\newcommand\staliro{{\textsc{S-TaLiRo}}\xspace}
+
+\newcommand{\BSig}{\Bc(R,X)}
+\newcommand{\dsig}{\gentraj}
+\newcommand{\DSig}{\Fr(N,X)}
+\newcommand{\sam}{{\tau}}
+\newcommand{\Sam}{\Tr}
+\newcommand{\SamC}{\Fr^\uparrow_c(N,R)}
+\newcommand{\tfun}{\tau}
+\newcommand{\TFun}{\Fr^\uparrow(N,\Re_{\geq 0})}
+\newcommand{\rts}{\mu}
+\newcommand{\hts}{\mu}
+\newcommand{\tss}{\mu}
+\newcommand{\TSS}{\DSig \times \TFun}
+\newcommand{\SamDom}{\Nr}
+
+%\newcommand{\st}{\;|\;}
+% \newcommand{\dom}{\mbox{dom\;}}
+\newcommand{\dom}{\mathbf{dom}}
+\newcommand{\range}{\mathbf{range}}
+\newcommand{\nnf}{\mathbf{nnf}}
+\newcommand{\str}{\mathbf{str}_{\Delta\sam}}
+% \newcommand{\trs}{\mathbf{mtc}}
+\newcommand{\dur}{\mathbf{dur}}
+\newcommand{\mtl}{MTL}
+\newcommand{\mitl}{MITL}
+\newcommand{\ltl}{LTL}
+
+\newcommand{\FTS}{\Tc}
+\newcommand{\SYS}{\Sigma}
+\newcommand{\DSYS}{\SYS}
+\newcommand{\DASYS}{\mathcal{D}} % Symbol for discrete abstraction
+\newcommand{\exmpDASYS}{\DASYS} % symbol for system used as example globally in a paper
+\newcommand{\LPV}{\SYS^{\bf LPV}}
+\newcommand{\clLPV}{\overline{\SYS}^{\bf LPV}}
+\newcommand{\LTI}{\SYS^{\bf LTI}}
+\newcommand{\clLTI}{\overline{\SYS}^{\bf LTI}}
+\newcommand{\LTV}{\SYS^{\bf LTV}}
+\newcommand{\clLTV}{\overline{\SYS}^{\bf LTV}}
+\newcommand{\clDSYS}{\overline{\SYS}}
+\newcommand{\OmapSYS}{\Fr(AP,\Pc(Y))}
+
+\newcommand{\xinX}{\hat x}
+\newcommand{\pinP}{\hat p}
+
+%MTL
+\newcommand{\Sn}{\mathcal{S}}
+
+\newcommand{\AP}{AP}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% danger sign
+\font\manual=manfnt
+\def\dbend{{\manual\char127}} % dangerous bend sign
+% Danger, Will Robinson!
+\def\danger{\begin{trivlist}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+\def\enddanger{\par\end{trivlist}}
+% Danger! Danger!
+\def\ddanger{\begin{trivlist}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
+\def\endddanger{\par\end{trivlist}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Ending examples mark
+% \newcommand{\exmend}{\hfill \ensuremath{\Box}}
+\newcommand{\exmend}{\hfill \ensuremath{\bigtriangleup }}
+
+% Notation for different states of automata
+\newcommand{\spaut}{w} % state of a product automaton
+
+% two options for projection
+%\newcommand{\proj}[2]{#1|_{#2}}
+\newcommand{\proj}[2]{{\bf pr}_{#2}(#1)}
+
+\newcommand{\modMTL}[2]{[#1]_{#2}}
+
+
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\sig}{\vx}
+\newcommand{\psig}[2]{\sig_{[#1,#2]}}
+\newcommand{\alw}{\mathbf{G}}
+\newcommand{\ev}{\mathbf{F}}
+\newcommand{\until}{\mathbf{U}}
+\newcommand{\release}{\mathbf{R}}
+% \newcommand{\todoz}[1]{\noindent \textcolor{blue}{#1} \\}
+
+\newcommand{\timedomain}{\mathbb{T}}
+\newcommand{\domain}{\mathcal{D}}
+\newcommand{\setof}[1]{\left\{#1\right\}}
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\mypara}[1]{\vspace{0.6em} \noindent {\em #1.}}
+
+\newcommand{\always}{\alw}
+\newcommand{\eventually}{\ev}
+\newcommand{\defeq}{:=}
