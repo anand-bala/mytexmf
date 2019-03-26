@@ -1,9 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{myhomework}[2019/02/07 A LaTeX class to write homeworks (especially math related)]
+\ProvidesClass{mynotes}[2019/02/07 A LaTeX class to write notes]
 
 
 
-\LoadClass[onecolumn]{scrartcl}
+\LoadClass[onecolumn]{article}
 % Declare options here
 \DeclareOption{twocolumn}{\OptionNotUsed}
 
@@ -19,7 +19,6 @@
 \RequirePackage{tikz}
 \RequirePackage[plain]{algorithm}
 \RequirePackage{algpseudocode}
-\RequirePackage{titlesec}
 \RequirePackage[hidelinks]{hyperref}
 
 \usetikzlibrary{automata,positioning}
@@ -40,7 +39,7 @@
 
 \pagestyle{fancy}
 \lhead{\@Author}
-\chead{\@Title}
+\chead{\textbf{\Large\@Title}}
 \cfoot{\thepage}
 
 \def\@Title{\@title}
@@ -51,11 +50,13 @@
 
 \setlength\parindent{0pt}
 
-\newtheorem{thm}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
-\newtheorem{prop}{Proposition}[section]
-\newtheorem{rem}{Remark}[section]
-\newtheorem{clm}{Claim}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
 
 \theoremstyle{definition}
 
