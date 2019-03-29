@@ -1,19 +1,29 @@
 
-\RequirePackage[includeheadfoot,columnsep=2cm, left=1in, right=1in, top=.5in, bottom=.5in]{geometry} % Margins
+\RequirePackage[
+  includeheadfoot,
+  left=1in,
+  right=1in,
+  top=.5in,
+  bottom=.5in
+]{geometry}
 
 \RequirePackage[T1]{fontenc} % For international characters
 \RequirePackage[utf8]{inputenc} % UTF-8 Input Format
-\usepackage{XCharter} % XCharter as the main font
+\RequirePackage{XCharter} % XCharter as the main font
 
-\usepackage[english]{babel} % Use english by default
+\RequirePackage[style=mla]{biblatex}
 
+\RequirePackage[english]{babel} % Use english by default
+\RequirePackage{csquotes}
+
+\RequirePackage[colorlinks]{hyperref}
 %----------------------------------------------------------------------------------------
 %	CUSTOM COMMANDS
 %----------------------------------------------------------------------------------------
 
 \newcommand{\articletitle}[1]{\renewcommand{\articletitle}{#1}} % Define a command for storing the article title
 \newcommand{\articlecitation}[1]{\renewcommand{\articlecitation}{#1}} % Define a command for storing the article citation
-\newcommand{\doctitle}{\articlecitation\ --- ``\articletitle''} % Define a command to store the article information as it will appear in the title and header
+\newcommand{\doctitle}{\articlecitation--\articletitle} % Define a command to store the article information as it will appear in the title and header
 
 \newcommand{\datenotesstarted}[1]{\renewcommand{\datenotesstarted}{#1}} % Define a command to store the date when notes were first made
 \newcommand{\docdate}[1]{\renewcommand{\docdate}{#1}} % Define a command to store the date line in the title
@@ -35,7 +45,7 @@
 %	STRUCTURE MODIFICATIONS
 %----------------------------------------------------------------------------------------
 
-\setlength{\parskip}{3pt} % Slightly increase spacing between paragraphs
+% \setlength{\parskip}{3pt} % Slightly increase spacing between paragraphs
 
 % Uncomment to center section titles
 %\usepackage{sectsty}
