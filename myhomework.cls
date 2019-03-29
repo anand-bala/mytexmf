@@ -47,7 +47,7 @@
 \renewcommand\headrulewidth{0.4pt}
 \renewcommand\footrulewidth{0.4pt}
 
-\setlength\parindent{0pt}
+% \setlength\parindent{0pt}
 
 %
 % Create Problem Sections
@@ -59,11 +59,10 @@
 \titleformat
 {\problem} % Command
 {\sffamily\Large} % Format
-{} % Label
+{\textbf{Problem \arabic{problem}.}} % Label
 {-0.67em} % Horizontal sep
 {
     \setcounter{partCounter}{1}
-    \textbf{Problem \arabic{problem}.}
 } % Before code
 [
 ] % After code
@@ -99,15 +98,21 @@
     \vspace{0.1in}\large{Instructor: \textit{\@hwinstructor}}
 }
 
-
-\newtheorem{theorem}{Theorem}[problem]
-\newtheorem{lemma}{Lemma}[problem]
-\newtheorem{proposition}{Proposition}[problem]
-\newtheorem{remark}{Remark}[problem]
-\newtheorem{claim}{Claim}[problem]
-\newcommand{\solution}{\vspace{0.2in}\textbf{\large Solution}}
+\numberwithin{equation}{problem}
 
 \theoremstyle{definition}
+
+\newtheorem{definition}{Definition}[problem]
+\newtheorem{theorem}{Theorem}[problem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}[problem]
+\newtheorem{claim}{Claim}[problem]
+\newtheorem{assumption}{Assumption}[problem]
+\newcommand{\solution}{\vspace{0.2in}\textbf{\large Solution}}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
 
 
 
