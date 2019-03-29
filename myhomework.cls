@@ -18,7 +18,7 @@
 \RequirePackage{tikz}
 \RequirePackage[plain]{algorithm}
 \RequirePackage{algpseudocode}
-\RequirePackage{titlesec}
+\RequirePackage[loadonly]{titlesec}
 \RequirePackage[hidelinks]{hyperref}
 
 \usetikzlibrary{automata,positioning}
@@ -53,22 +53,19 @@
 % Create Problem Sections
 %
 
-\titleclass{\problem}{straight}[\section]%
+\titleclass{\problem}[0]{straight}%
 \newcounter{problem}%
-\setcounter{problem}{1}
-\providecommand*{\toclevel@problem}{1}
 
 \titleformat
 {\problem} % Command
 {\sffamily\Large} % Format
 {} % Label
-{1em} % Horizontal sep
+{-0.67em} % Horizontal sep
 {
     \setcounter{partCounter}{1}
     \textbf{Problem \arabic{problem}.}
 } % Before code
 [
-    \stepcounter{problem}
 ] % After code
 
 \titlespacing*{\problem}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
@@ -87,7 +84,6 @@
 }{
 }
 
-\newcommand{\solution}{\vspace{0.2in}\textbf{\large Solution}}
 
 
 % Custom metadata
@@ -109,7 +105,7 @@
 \newtheorem{proposition}{Proposition}[problem]
 \newtheorem{remark}{Remark}[problem]
 \newtheorem{claim}{Claim}[problem]
-\newtheorem{solution}{Solution}[problem]
+\newcommand{\solution}{\vspace{0.2in}\textbf{\large Solution}}
 
 \theoremstyle{definition}
 
