@@ -17,6 +17,17 @@
 \RequirePackage{csquotes}
 
 \RequirePackage[colorlinks]{hyperref}
+
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{amsfonts}
+\RequirePackage{tikz}
+\RequirePackage[plain]{algorithm}
+\RequirePackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+
 %----------------------------------------------------------------------------------------
 %	CUSTOM COMMANDS
 %----------------------------------------------------------------------------------------
@@ -53,3 +64,21 @@
 
 % Uncomment for Roman numerals for section numbers
 %\renewcommand\thesection{\Roman{section}}
+
+%----------------------------------------------------------------------------------------
+% FORMAL HELPERS
+%----------------------------------------------------------------------------------------
+
+\theoremstyle{definition}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{assumption}{Assumption}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{note}{Note}
+
