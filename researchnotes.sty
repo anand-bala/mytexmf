@@ -9,7 +9,10 @@
 
 \RequirePackage[T1]{fontenc} % For international characters
 \RequirePackage[utf8]{inputenc} % UTF-8 Input Format
-\RequirePackage{times}
+% \RequirePackage{XCharter} % XCharter as the main font
+\RequirePackage{fourier}
+
+\RequirePackage[style=mla]{biblatex}
 
 \RequirePackage[english]{babel} % Use english by default
 \RequirePackage{csquotes}
@@ -34,7 +37,7 @@
 %	STRUCTURE MODIFICATIONS
 %----------------------------------------------------------------------------------------
 
-\setlength{\parskip}{3pt} % Slightly increase spacing between paragraphs
+\setlength{\parskip}{5pt} % Slightly increase spacing between paragraphs
 \onehalfspacing%
 
 \RequirePackage[inline]{enumitem}
@@ -60,6 +63,7 @@
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{claim}{Claim}[section]
 \newtheorem{assumption}{Assumption}[section]
+\newtheorem{challenge}{Challenge}[section]
 
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
