@@ -18,7 +18,7 @@
 
 \RequirePackage{titlecaps}
 \RequirePackage[explicit]{titlesec}
-\titleformat{\section}{\Large\bfseries}{}{0pt}{\titlecap{#1}\\\rule{\textwidth}{0.4pt}}
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.25em}{\titlecap{#1}}[{\titlerule[0.8pt]}]
 \titleformat{\subsection}{\large\bfseries}{}{0pt}{\titlecap{#1}}
 \titleformat{\subsubsection}{\bfseries}{}{0pt}{\titlecap{#1}}
 %\titlespacing*{\section}{0pt}{0.5em}{0.3pt}
