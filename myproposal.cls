@@ -1,3 +1,5 @@
+% vim: set ft=tex
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{proposal}
 \LoadClass[11pt, letterpaper, timesnewroman, onecolumn]{article}
