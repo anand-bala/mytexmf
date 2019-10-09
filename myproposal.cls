@@ -1,8 +1,20 @@
 % vim: set ft=tex
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{proposal}
+\ProvidesClass{myproposal}
 \LoadClass[11pt, letterpaper, timesnewroman, onecolumn]{article}
+
+% Better fonts with accents
+\RequirePackage[T1]{fontenc}
+
+% Math symbols
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage{centernot}
+\RequirePackage{mathtools}
+
 
 \RequirePackage[margin=1in]{geometry}
 \RequirePackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=black,filecolor=black]{hyperref}
@@ -26,5 +38,25 @@
 %\titlespacing*{\subsubsection}{0pt}{0.25em}{0pt}
 
 \renewcommand{\title}[1]{\def\@title{\LARGE\bfseries{#1}}}
+
+\usepackage{booktabs}
+
+% ----- Theorem Helpers -------------------------------------------------------
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem*{problem}{Problem Statement}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{lemma}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{assumption}{Assumption}
+\newtheorem*{proposition}{Proposition}
+
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
 
 
