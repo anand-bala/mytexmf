@@ -6,6 +6,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{latexsym}
 
+\RequirePackage{esvect}
 
 \newcommand{\setof}[1]{\left\{#1\right\}}
 \newcommand{\tupleof}[1]{\left\langle#1\right\rangle}
@@ -13,8 +14,9 @@
 % Vector notation
 \newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
 % Absolute value notation
-\newcommand{\abs}[1]{\left\lvert #1 \right\lvert}
-\newcommand{\norm}[1]{\left\lVert #1 \right\lVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\lvert}%
+\newcommand{\norm}[1]{\left\lVert #1 \right\lVert}%
+\newcommand{\Norm}[2]{\norm{#1}_{#2}}%
 % Differential notation
 \newcommand{\diff}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\ndiff}[3]{\frac{\partial^{#3} #1}{\partial #2 ^{#3}}}
@@ -24,13 +26,13 @@
 \newcommand{\defeq}{:=}
 
 % Probability
-\newcommand{\EE}[2]{\mathbb{E}_{#1\!\!}\left[#2\right]}
+\newcommand{\EE}[2]{\mathbf{E}_{#1\!\!}\left[#2\right]}
 \newcommand{\CEE}[3]{\EE{#1}{{#2}~\middle\vert~{#3}}}
 \newcommand{\E}[1]{\EE{\,}{#1}}
 \newcommand{\CE}[2]{\CEE{\,}{#1}{#2}}
 \newcommand{\CP}[2]{{\prob{#1\mid#2}}}
-\newcommand{\prob}[1]{\mathbb{P}\left[#1\right]}
-% \newcommand{\Pr}[1]{{{\rm Pr\!}\left\{#1\right\}}}
+\newcommand{\prob}[1]{\mathbf{prob}\left(#1\right)}
+\newcommand{\Prob}[1]{{{\rm Pr\!}\left\{#1\right\}}}
 
 % Sets
 \newcommand{\Reals}{\mathbb{R}}
@@ -38,6 +40,8 @@
 % Typography
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\minimize}{minimize}
+\DeclareMathOperator*{\maximize}{maximize}
 
 \newcommand{\Ce}{\mathbb{C}}
 \newcommand{\Be}{\mathbb{B}}

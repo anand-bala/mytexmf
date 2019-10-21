@@ -1,118 +1,132 @@
+% vim: set ft=tex
+
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{myhomework}[2019/02/07 A LaTeX class to write homeworks (especially math related)]
+\LoadClassWithOptions{article}
+\ProvidesClass{myhomework}[2019/10/06 Class file for homework assignments]
+
+% ----- Packages --------------------------------------------------------------
+
+% Better fonts with accents
+\RequirePackage[T1]{fontenc}
+
+% Math symbols
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage{centernot}
+\RequirePackage{mathtools}
 
 
+% Nice lists
+\RequirePackage{enumerate}
+\RequirePackage{enumitem}
 
-\LoadClass[onecolumn]{article}
-% Declare options here
-\DeclareOption{twocolumn}{\OptionNotUsed}
+% Nice images, figures, and listings
+\RequirePackage{graphicx}
+\DeclareGraphicsExtensions{.eps,.pdf,.jpeg,.png}
+\RequirePackage{grffile}
+\RequirePackage[all]{xy}
+\RequirePackage{wrapfig}
+\RequirePackage{fancyvrb}
+\RequirePackage{listings}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-\ProcessOptions\relax
+% Nice tables
+\RequirePackage{float}
+\RequirePackage{booktabs}
+
+% Conditionals
+\RequirePackage{ifthen}
+
+% Links
+\RequirePackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=black,filecolor=black,bookmarks=false]{hyperref}
+
+% ----- Custom Commands -------------------------------------------------------
+
+% \providecommand{\title}%
+% \renewcommand\title[1]{\def{\@Title}{#1}}
+% \providecommand{\author}%
+% \renewcommand{\author}[1]{\def\@Author{#1}}%
+% \providecommand{\email}%
+% \renewcommand{\email}[1]{\def\@Email{#1}}%
+
+\def\@Title{\@title}
+
+% ----- Header & Page Setup ---------------------------------------------------
+\RequirePackage[margin=1in]{geometry}
 
 \RequirePackage{fancyhdr}
-\RequirePackage{extramarks}
-\RequirePackage{amsmath}
-\RequirePackage{amsthm}
-\RequirePackage{amsfonts}
-\RequirePackage{tikz}
-\RequirePackage[plain]{algorithm}
-\RequirePackage{algpseudocode}
-\RequirePackage[loadonly]{titlesec}
-\RequirePackage[hidelinks]{hyperref}
-
-\usetikzlibrary{automata,positioning}
-
-
-%
-% Basic Document Settings
-%
-
-\topmargin=-0.45in
-\evensidemargin=0in
-\oddsidemargin=0in
-\textwidth=6.5in
-\textheight=9.0in
-\headsep=0.25in
-
-\linespread{1.1}
-
 \pagestyle{fancy}
-\lhead{\@Author}
-\chead{\@Title}
-\rhead{ID: \@studentid}
-\lfoot{}
-\cfoot{\thepage}
+\fancyhf{}
+\lhead{\@Title}
+% \rhead{\@Author}
+\cfoot{\thepage.}
 
-\renewcommand\headrulewidth{0.4pt}
-\renewcommand\footrulewidth{0.4pt}
+\setlength{\headheight}{14pt}%
 
-% \setlength\parindent{0pt}
+% ----- Custom sections -------------------------------------------------------
 
-%
-% Create Problem Sections
-%
+\RequirePackage[explicit]{titlesec}
+\def\@sectype{Question}
+\newcommand{\sectype}[1]{\def\@sectype{#1}}
 
-\titleclass{\problem}[0]{straight}%
-\newcounter{problem}%
+\titleformat{\section}{\large\bfseries}{\@sectype~\thesection.}{0.25em}{#1}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}{\normalfont\bfseries}{Part~(\alph{subsection}).}{0.25em}{\textnormal{#1}}
+% \titleformat{\subsubsection}{\bfseries}{}{0pt}{\titlecap{#1}}
+%\titlespacing*{\section}{0pt}{0.5em}{0.3pt}
+%\titlespacing*{\subsection}{0pt}{0.35em}{0pt}
+%\titlespacing*{\subsubsection}{0pt}{0.25em}{0pt}
 
-\titleformat
-{\problem} % Command
-{\sffamily\Large} % Format
-{\textbf{Problem \arabic{problem}.}} % Label
-{-0.67em} % Horizontal sep
-{
-    \setcounter{partCounter}{1}
-} % Before code
-[
-] % After code
+% ----- Theorem Helpers -------------------------------------------------------
 
-\titlespacing*{\problem}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
-\setcounter{secnumdepth}{0}
-\newcounter{homeworkProblemCounter}
-\setcounter{homeworkProblemCounter}{1}
-\newcounter{partCounter}[problem]
-
-\newenvironment{homeworkProblem}[1][-1]{
-    \ifnum#1>0
-        \setcounter{homeworkProblemCounter}{#1}
-    \fi
-    \section{Problem \arabic{homeworkProblemCounter}}
-    \setcounter{partCounter}{1}
-}{
-}
-
-
-
-% Custom metadata
-\newcommand{\Title}[1]{\def\@Title{#1}}
-\newcommand{\Author}[1]{\def\@Author{#1}\author{#1}}
-\newcommand{\hwclass}[1]{\def\@hwclass{#1}}
-\newcommand{\hwinstructor}[1]{\def\@hwinstructor{#1}}
-\newcommand{\studentid}[1]{\def\@studentid{#1}}
-
-\title{
-    \vspace{2in}
-    \textmd{\textbf{\@hwclass:\ \@Title}}\\
-    \vspace{0.1in}\large{Instructor: \textit{\@hwinstructor}}
-}
-
-\numberwithin{equation}{problem}
+\newcommand{\problemname}{Problem Statement}
 
 \theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{problem}{\problemname}
 
-\newtheorem{definition}{Definition}[problem]
-\newtheorem{theorem}{Theorem}[problem]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}{Proposition}[problem]
-\newtheorem{claim}{Claim}[problem]
-\newtheorem{assumption}{Assumption}[problem]
-\newcommand{\solution}{\vspace{0.2in}\textbf{\large Solution}}
+\newtheorem*{assumption}{Assumption}
+\newtheorem*{proposition}{Proposition}
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem*{claim}{Claim}
 
 
+
+% ----- Math stuff ------------------------------------------------------------
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{empheq}
+
+
+\tcbset{colback=yellow!10!white, colframe=red!50!black, 
+  highlight math style= {enhanced, colframe=red,colback=red!10!white,boxsep=0pt}
+}
+
+\newenvironment{emphalign}{%
+  \empheq{align}
+}{\endempheq}
+
+\tcolorboxenvironment{emphalign}{colback=yellow!10!white, colframe=red!50!black, 
+  highlight math style= {enhanced,colframe=red,colback=red!10!white,boxsep=0pt}
+}
+
+\newenvironment{emphalign*}{%
+  \empheq{align*}
+}{\endempheq}
+
+\tcolorboxenvironment{emphalign*}{colback=yellow!10!white, colframe=red!50!black, 
+  highlight math style= {enhanced,colframe=red,colback=red!10!white,boxsep=0pt}
+}
+% ----- For usage with pandoc converted documents -----------------------------
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% ----- END CLASS -------------------------------------------------------------
+\endinput
 
 
