@@ -72,6 +72,7 @@
 \newtheorem{definition}{Definition}
 \newtheorem*{definition*}{Definition}
 \newtheorem*{problem}{\problemname}
+\newtheorem*{notation}{Notation}
 
 \theoremstyle{plain}
 \newtheorem{hypothesis}{Hypothesis}[section]
