@@ -97,7 +97,8 @@
 \newtheorem*{claim}{Claim}
 \newtheorem*{remark}{Remark}
 
-
+% Custom Solution proof-like environment 
+\newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
 
 % ----- Math stuff ------------------------------------------------------------
 
