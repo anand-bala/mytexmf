@@ -6,7 +6,11 @@
 \RequirePackage{amssymb}
 \RequirePackage{latexsym}
 
+% For sexy vectors
 \RequirePackage{esvect}
+
+% For sexy physics stuff
+\RequirePackage{physics}
 
 \newcommand{\setof}[1]{\left\{#1\right\}}
 \newcommand{\tupleof}[1]{\left\langle#1\right\rangle}
@@ -14,12 +18,10 @@
 % Vector notation
 \newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
 % Absolute value notation
-\newcommand{\abs}[1]{\left\lvert #1 \right\lvert}%
-\newcommand{\norm}[1]{\left\lVert #1 \right\lVert}%
-\newcommand{\Norm}[2]{\norm{#1}_{#2}}%
-% Differential notation
-\newcommand{\diff}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\ndiff}[3]{\frac{\partial^{#3} #1}{\partial #2 ^{#3}}}
+% \newcommand{\abs}[1]{\left\lvert #1 \right\lvert}%
+% \newcommand{\norm}[1]{\left\lVert #1 \right\lVert}%
+% \newcommand{\Norm}[2]{\norm{#1}_{#2}}%
+
 
 % Misc
 \newcommand{\expnumber}[2]{{#1}\mathrm{e}{#2}}
@@ -34,15 +36,15 @@
 \newcommand{\prob}[1]{\mathbf{prob}\left(#1\right)}
 \newcommand{\Prob}[1]{{{\rm Pr\!}\left\{#1\right\}}}
 
-% Sets
-\newcommand{\Reals}{\mathbb{R}}
-
-% Typography
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
+% Operators
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\minimize}{minimize}
 \DeclareMathOperator*{\maximize}{maximize}
+\newcommand{\subjectto}{\textrm{subject to}}
 
+
+% Typography
 \newcommand{\Ce}{\mathbb{C}}
 \newcommand{\Be}{\mathbb{B}}
 \newcommand{\Ee}{\mathbb{E}}
@@ -98,3 +100,4 @@
 
 \newcommand{\Tt}{\mathbb{T}}
 
+\endinput%

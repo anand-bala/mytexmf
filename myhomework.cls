@@ -84,15 +84,18 @@
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
 \newtheorem*{problem}{\problemname}
-
-\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem*{notation}{Notation}
+
+\theoremstyle{plain}
 \newtheorem*{assumption}{Assumption}
 \newtheorem*{proposition}{Proposition}
 
 \theoremstyle{remark}
 \newtheorem*{claim}{Claim}
+\newtheorem*{remark}{Remark}
 
 
 
@@ -101,6 +104,7 @@
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{empheq}
 
+\numberwithin{equation}{section}
 
 \tcbset{colback=yellow!10!white, colframe=red!50!black, 
   highlight math style= {enhanced, colframe=red,colback=red!10!white,boxsep=0pt}
