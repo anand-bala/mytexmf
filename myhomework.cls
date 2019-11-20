@@ -1,4 +1,4 @@
-% vim: set ft=tex
+% vim: set ft=tex nospell
 
 \NeedsTeXFormat{LaTeX2e}
 \LoadClassWithOptions{article}
@@ -17,19 +17,22 @@
 \RequirePackage{centernot}
 \RequirePackage{mathtools}
 
+% For multicol stuff
+\RequirePackage{multicol}
+\RequirePackage{tasks}
 
 % Nice lists
 \RequirePackage{enumerate}
 \RequirePackage{enumitem}
 
-% Nice images, figures, and listings
+% Nice images, figures
 \RequirePackage{graphicx}
 \DeclareGraphicsExtensions{.eps,.pdf,.jpeg,.png}
-\RequirePackage{grffile}
-\RequirePackage[all]{xy}
 \RequirePackage{wrapfig}
-\RequirePackage{fancyvrb}
-\RequirePackage{listings}
+
+% Nice Algorithms
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
 
 % Nice tables
 \RequirePackage{float}
@@ -51,16 +54,19 @@
 % \renewcommand{\email}[1]{\def\@Email{#1}}%
 
 \def\@Title{\@title}
+\def\@Author{\@author}
 
 % ----- Header & Page Setup ---------------------------------------------------
 \RequirePackage[margin=1in]{geometry}
 
-\RequirePackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\lhead{\@Title}
+\RequirePackage{fancyhdr} \pagestyle{fancy} \fancyhf{} \lhead{\@Title}
 % \rhead{\@Author}
 \cfoot{\thepage.}
+
+\RequirePackage{titling} \pretitle{\begin{center}\Large\bfseries}
+\posttitle{\par\end{center}}
+
+\setlength{\droptitle}{-15ex}
 
 \setlength{\headheight}{14pt}%
 
@@ -71,7 +77,7 @@
 \newcommand{\sectype}[1]{\def\@sectype{#1}}
 
 \titleformat{\section}{\large\bfseries}{\@sectype~\thesection.}{0.25em}{#1}[{\titlerule[0.8pt]}]
-\titleformat{\subsection}{\normalfont\bfseries}{Part~(\alph{subsection}).}{0.25em}{\textnormal{#1}}
+\titleformat{\subsection}[runin]{\normalfont\bfseries}{Part~(\alph{subsection}).}{0.25em}{\textnormal{#1}}
 % \titleformat{\subsubsection}{\bfseries}{}{0pt}{\titlecap{#1}}
 %\titlespacing*{\section}{0pt}{0.5em}{0.3pt}
 %\titlespacing*{\subsection}{0pt}{0.35em}{0pt}
@@ -86,6 +92,8 @@
 \newtheorem*{problem}{\problemname}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{idea}{Idea}
+\newtheorem*{analysis}{Analysis}
 
 \newtheorem*{notation}{Notation}
 
@@ -99,6 +107,7 @@
 
 % Custom Solution proof-like environment 
 \newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
+
 
 % ----- Math stuff ------------------------------------------------------------
 
@@ -133,5 +142,4 @@
 
 % ----- END CLASS -------------------------------------------------------------
 \endinput
-
 
