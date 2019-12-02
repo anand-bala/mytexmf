@@ -104,10 +104,22 @@
 \theoremstyle{remark}
 \newtheorem*{claim}{Claim}
 \newtheorem*{remark}{Remark}
+\newtheorem*{example}{Example}
 
 % Custom Solution proof-like environment 
-\newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
+\newenvironment{solution}{%
+  \begin{proof}[Solution]%
+}{%
+  \end{proof}%
+}
 
+% Custom proof-like, subproof environment
+\newenvironment{subproof}[1][\proofname]{%
+  \renewcommand{\qedsymbol}{$\blacksquare$}%
+  \begin{proof}[#1]%
+}{%
+  \end{proof}%
+}
 
 % ----- Math stuff ------------------------------------------------------------
 
