@@ -1,7 +1,8 @@
-% vim: set ft=tex
+% vim: set ft=tex nospell
+
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mynotes}[2019/02/07 A LaTeX class to write notes]
-\PassOptionsToClass{onecolumn,timesnewroman}{article}
+\ProvidesClass{anand-notes}[2019/02/07 A LaTeX class to write notes]
+\PassOptionsToClass{onecolumn}{article}
 \LoadClassWithOptions{article}
 
 % ----- Packages --------------------------------------------------------------
@@ -17,19 +18,22 @@
 \RequirePackage{centernot}
 \RequirePackage{mathtools}
 
+% For multicol stuff
+\RequirePackage{multicol}
+\RequirePackage{tasks}
 
 % Nice lists
 \RequirePackage{enumerate}
 \RequirePackage{enumitem}
 
-% Nice images, figures, and listings
+% Nice images, figures
 \RequirePackage{graphicx}
 \DeclareGraphicsExtensions{.eps,.pdf,.jpeg,.png}
-\RequirePackage{grffile}
-\RequirePackage[all]{xy}
 \RequirePackage{wrapfig}
-\RequirePackage{fancyvrb}
-\RequirePackage{listings}
+
+% Nice Algorithms
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
 
 % Nice tables
 \RequirePackage{float}
@@ -39,17 +43,39 @@
 \RequirePackage{ifthen}
 
 % Links
-\RequirePackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=black,filecolor=black,bookmarks=false]{hyperref}
+\RequirePackage[
+  colorlinks,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black,
+  filecolor=black,
+  bookmarks=false
+]{hyperref}
+
+% ----- Custom Commands -------------------------------------------------------
+
+\def\@Title{\@title}
+\def\@Author{\@author}
 
 % ----- Header & Page Setup ---------------------------------------------------
-
 \RequirePackage[margin=1in]{geometry}
 
 \RequirePackage{fancyhdr}
-\pagestyle{fancyplain}
-\renewcommand{\headrulewidth}{0pt}
+\pagestyle{fancy}
 \fancyhf{}
-\fancyfoot[R]{\thepage} 
+\fancyhead[R]{\rightmark}
+\fancyhead[L]{\thepage}
+
+\fancyfoot[C]{\@Title --- \@Author}
+
+
+\RequirePackage{titling} 
+\pretitle{\begin{center}\Large\bfseries}
+\posttitle{\par\end{center}}
+
+\setlength{\droptitle}{-15ex}
+
+\setlength{\headheight}{14pt}%
 
 % ----- Custom sections -------------------------------------------------------
 
@@ -62,8 +88,6 @@
 %\titlespacing*{\subsection}{0pt}{0.35em}{0pt}
 %\titlespacing*{\subsubsection}{0pt}{0.25em}{0pt}
 
-% \renewcommand{\title}[1]{\def\@title{\LARGE\bfseries{#1}}}
-
 % ----- Formalism Helpers -----------------------------------------------------
 
 \newcommand{\problemname}{Problem Statement}
@@ -73,11 +97,11 @@
 \newtheorem*{definition*}{Definition}
 \newtheorem*{problem}{\problemname}
 \newtheorem*{notation}{Notation}
-
-\theoremstyle{plain}
 \newtheorem{hypothesis}{Hypothesis}[section]
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{plain}
 \newtheorem*{assumption}{Assumption}
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem*{proposition*}{Proposition}

@@ -2,7 +2,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \LoadClassWithOptions{article}
-\ProvidesClass{myhomework}[2019/10/06 Class file for homework assignments]
+\ProvidesClass{anand-hw}[2019/10/06 Class file for homework assignments]
 
 % ----- Packages --------------------------------------------------------------
 
@@ -59,11 +59,15 @@
 % ----- Header & Page Setup ---------------------------------------------------
 \RequirePackage[margin=1in]{geometry}
 
-\RequirePackage{fancyhdr} \pagestyle{fancy} \fancyhf{} \lhead{\@Title}
-% \rhead{\@Author}
-\cfoot{\thepage.}
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\@Title}
+\fancyhead[L]{\thepage}
 
-\RequirePackage{titling} \pretitle{\begin{center}\Large\bfseries}
+
+\RequirePackage{titling}
+\pretitle{\begin{center}\Large\bfseries}
 \posttitle{\par\end{center}}
 
 \setlength{\droptitle}{-15ex}
