@@ -5,11 +5,11 @@
 
 % Conditionals
 \RequirePackage{ifthen}
-\newboolean{nosecnumber}
-\setboolean{nosecnumber}{false}
+\newboolean{secnumber}
+\setboolean{secnumber}{false}
 
 \DeclareOption{twocolumn}{\OptionNotUsed}
-\DeclareOption{nosecnumber}{\setboolean{nosecnumber}{true}}
+\DeclareOption{secnumber}{\setboolean{secnumber}{true}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
@@ -70,10 +70,11 @@
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[R]{\rightmark}
-\fancyhead[L]{\thepage}
+\fancyfoot[R]{\rightmark}
+\fancyfoot[L]{\thepage}
 
-\fancyfoot[C]{\@Title --- \@Author}
+\fancyhead[C]{\@Title}
+
 
 \RequirePackage{titling} 
 \pretitle{\begin{center}\Large\bfseries}
@@ -84,22 +85,20 @@
 \setlength{\headheight}{14pt}%
 
 % ----- Custom sections -------------------------------------------------------
-
 \RequirePackage{titlecaps}
 \RequirePackage[explicit]{titlesec}
 
-\ifthenelse{\boolean{nosecnumber}}{%
-\titleformat{\section}{\Large\bfseries}{}{0.25em}{\titlecap{#1}}[{\titlerule[0.8pt]}]
+\ifthenelse{\boolean{secnumber}}{%
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.25em}{\titlecap{#1}}
 }%
 {%
-\titleformat{\section}{\Large\bfseries}{\thesection.}{0.25em}{\titlecap{#1}}[{\titlerule[0.8pt]}]
+  \titleformat{\section}{\large\bfseries}{}{0pt}{\underline{\textsc{#1}}}
 }
-\titleformat{\subsection}{\large\bfseries}{}{0pt}{\titlecap{#1}}
-\titleformat{\subsubsection}{\bfseries}{}{0pt}{\titlecap{#1}}
+\titleformat{\subsection}[runin]{\bfseries}{}{0.5em}{\titlecap{#1}.}
+% \titleformat{\subsubsection}{\bfseries}{}{0pt}{\titlecap{#1}}
 %\titlespacing*{\section}{0pt}{0.5em}{0.3pt}
 %\titlespacing*{\subsection}{0pt}{0.35em}{0pt}
 %\titlespacing*{\subsubsection}{0pt}{0.25em}{0pt}
-
 % ----- Formalism Helpers -----------------------------------------------------
 
 \newcommand{\problemname}{Problem Statement}
