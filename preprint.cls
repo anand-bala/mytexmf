@@ -324,7 +324,7 @@ backend=biber,
 \newtheorem*{notation}{Notation}
 \newtheorem*{assumption}{Assumption}
 
-
+\newcommand{\definitionautorefname}{Definition}
 
 \endinput
 

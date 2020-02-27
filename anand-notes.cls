@@ -34,6 +34,11 @@
 % Nice Algorithms
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
+\RequirePackage{listings}% http://ctan.org/pkg/listings
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
 
 % Nice tables
 \RequirePackage{float}
