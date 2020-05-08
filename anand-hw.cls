@@ -17,6 +17,9 @@
 \RequirePackage{centernot}
 \RequirePackage{mathtools}
 
+\RequirePackage{esvect}
+\RequirePackage{physics}
+
 % For multicol stuff
 \RequirePackage{multicol}
 \RequirePackage{tasks}
@@ -70,7 +73,7 @@
 \pretitle{\begin{center}\Large\bfseries}
 \posttitle{\par\end{center}}
 
-\setlength{\droptitle}{-15ex}
+\setlength{\droptitle}{-20ex}
 
 \setlength{\headheight}{14pt}%
 
@@ -106,6 +109,7 @@
 \newtheorem*{proposition}{Proposition}
 
 \theoremstyle{remark}
+\newtheorem*{note}{Note}
 \newtheorem*{claim}{Claim}
 \newtheorem*{remark}{Remark}
 \newtheorem*{example}{Example}
