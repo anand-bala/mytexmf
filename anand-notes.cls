@@ -67,7 +67,9 @@
 % ----- Custom Commands -------------------------------------------------------
 
 \def\@Title{\@title}
+\newcommand\runningtitle[1]{\def\@Title{#1}}
 \def\@Author{\@author}
+\newcommand\runningauthor[1]{\def\@Author{#1}}
 
 % ----- Header & Page Setup ---------------------------------------------------
 \RequirePackage[margin=1in]{geometry}
@@ -75,10 +77,11 @@
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[R]{\rightmark}
-\fancyhead[L]{\thepage}
-
-\fancyfoot[C]{\@Title --- \@Author}
+\fancyhead[RE]{\@Author}
+\fancyhead[LO]{\@Title}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
 
 \RequirePackage{titling} 
 \pretitle{\begin{center}\Large\bfseries}
@@ -126,7 +129,7 @@
 \theoremstyle{remark}
 \newtheorem{claim}{Claim}[section]
 \newtheorem*{claim*}{Claim}
-\newtheorem*{remark*}{Remark}
+\newtheorem*{remark}{Remark}
 
 
 % ----- Math stuff ------------------------------------------------------------

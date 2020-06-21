@@ -1,20 +1,7 @@
-\RequirePackage{amsfonts}
-\RequirePackage{amsmath}
+\ProvidesPackage{notation}[2020/06/17 A package with common notation used in Anand's papers]
 
-\RequirePackage{amsthm}
-\RequirePackage{amstext}
-\RequirePackage{amssymb}
-\RequirePackage{latexsym}
 \RequirePackage{mathtools}
-
-% For sexy vectors
-\RequirePackage{esvect}
-
-% For sexy physics stuff
-\RequirePackage{physics}
-
-\newcommand{\setof}[1]{\left\{#1\right\}}
-\newcommand{\tupleof}[1]{\left\langle#1\right\rangle}
+\RequirePackage{etoolbox}
 
 % Vector notation
 \newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
@@ -23,31 +10,60 @@
 % \newcommand{\norm}[1]{\left\lVert #1 \right\lVert}%
 % \newcommand{\Norm}[2]{\norm{#1}_{#2}}%
 
-% Theory of computation stuff
-\newcommand{\NP}[1]{$\mathcal{NP}$--{#1}} 
+% -- Theory of computation stuff
+\newcommand{\NP}{\(\mathcal{NP}\)}
 
-% Misc
-\newcommand{\expnumber}[2]{{#1}\mathrm{e}{#2}}
-\newcommand{\defeq}{:=}
+% -- Misc
+\newcommand{\expnum}[2]{{#1}\mathrm{e}{#2}}
 
-% Probability
-\newcommand{\EE}[2]{\mathbf{E}_{#1\!\!}\left[#2\right]}
-\newcommand{\CEE}[3]{\EE{#1}{{#2}~\middle\vert~{#3}}}
-\newcommand{\E}[1]{\EE{\,}{#1}}
-\newcommand{\CE}[2]{\CEE{\,}{#1}{#2}}
-\newcommand{\CP}[2]{{\prob{#1\mid#2}}}
-\newcommand{\prob}[1]{\mathbf{prob}\left(#1\right)}
-\newcommand{\Prob}[1]{{{\rm Pr\!}\left\{#1\right\}}}
+% -- Helper functions
+% just to make sure it exists for probabilities and sets
+\providecommand\given{}
+% can be useful to refer to this outside \Set
+\newcommand\SetSymbol[1][]{%
+\nonscript\:#1\vert\allowbreak\nonscript\:\mathopen{}}
 
-% Operators
+% -- Tuple Notation
+\DeclarePairedDelimiterX\Tuple[1]\langle\rangle{%
+  \renewcommand\given{\SetSymbol[\delimsize]}#1}
+
+% -- Set notation (from https://www.ctan.org/pkg/mathtools)
+\DeclarePairedDelimiterX\Set[1]\{\}{%
+  \renewcommand\given{\SetSymbol[\delimsize]}#1}
+
+% -- Automatic lparen rparen sizing with \of
+\DeclarePairedDelimiterX\of[1]\lparen\rparen{%
+    \renewcommand\given{\SetSymbol[\delimsize]}#1}
+
+% -- Probability
+\DeclareMathOperator{\Dist}{\mathcal{D}} 
+\DeclareMathOperator{\Prob}{\mathrm{Pr\,}} 
+\DeclareMathOperator{\PExp}{\mathrm{E\,}}
+
+% -- Operators
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\minimize}{minimize}
 \DeclareMathOperator*{\maximize}{maximize}
 \newcommand{\subjectto}{\textrm{subject to}}
 
+\DeclareMathOperator{\grad}{\nabla}
+\DeclareMathOperator{\vgrad}{\mathbf{\nabla}}
 
-% Typography
+% -- Absolute and Norms
+\DeclarePairedDelimiterX\abs[1]\lvert\rvert{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX\norm[1]\lVert\rVert{\ifblank{#1}{\:\cdot\:}{#1}}
+
+% -- Numeric Sets
+\newcommand{\Naturals}{\mathbb{N}}
+\newcommand{\Integers}{\mathbb{Z}}
+\newcommand{\Rationals}{\mathbb{Q}}
+\newcommand{\Reals}{\mathbb{R}}
+
+% -- Topological Sets
+\newcommand{\Universal}{\mathbb{U}}
+
+% -- Typography
 \newcommand{\Ce}{\mathbb{C}}
 \newcommand{\Be}{\mathbb{B}}
 \newcommand{\Ee}{\mathbb{E}}
@@ -87,20 +103,5 @@
 \newcommand{\Wc}{\mathcal{W}}
 \newcommand{\Xc}{\mathcal{X}}
 \newcommand{\Zc}{\mathcal{Z}}
-
-% \newcommand{\Br}{\mathfrak{B}}
-% \newcommand{\Fr}{\mathfrak{F}}
-% \newcommand{\Gr}{\mathfrak{G}}
-% \newcommand{\Ir}{\mathfrak{I}}
-% \newcommand{\Kr}{\mathfrak{K}}
-% \newcommand{\Lr}{\mathfrak{L}}
-% \newcommand{\Nr}{\mathfrak{N}}
-% \newcommand{\Rr}{\mathfrak{R}}
-% \newcommand{\Sr}{\mathfrak{S}}
-% \newcommand{\Tr}{\mathfrak{T}}
-% \newcommand{\Ur}{\mathfrak{U}}
-% \newcommand{\Xr}{\mathfrak{X}}
-
-\newcommand{\Tt}{\mathbb{T}}
 
 \endinput%

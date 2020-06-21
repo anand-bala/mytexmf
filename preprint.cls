@@ -263,6 +263,9 @@ backend=biber,
   \end{quote}
 }
 
+
+\renewenvironment{abstract}{\section*{Acknowledgements}}{}
+
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
