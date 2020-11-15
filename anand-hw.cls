@@ -17,15 +17,11 @@
 \RequirePackage{centernot}
 \RequirePackage{mathtools}
 
-\RequirePackage{esvect}
-\RequirePackage{physics}
-
 % For multicol stuff
 \RequirePackage{multicol}
 \RequirePackage{tasks}
 
 % Nice lists
-\RequirePackage{enumerate}
 \RequirePackage{enumitem}
 
 % Nice images, figures
@@ -36,6 +32,7 @@
 % Nice Algorithms
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
+\newcommand{\algorithmautorefname}{Algorithm}
 
 % Nice tables
 \RequirePackage{float}
@@ -45,7 +42,7 @@
 \RequirePackage{ifthen}
 
 % Links
-\RequirePackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=black,filecolor=black,bookmarks=false]{hyperref}
+\RequirePackage[colorlinks,bookmarks=true]{hyperref}
 
 % ----- Custom Commands -------------------------------------------------------
 
@@ -65,8 +62,8 @@
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[R]{\@Title}
-\fancyhead[L]{\thepage}
+\fancyhead[L]{\@Title}
+\fancyfoot[C]{\thepage}
 
 
 \RequirePackage{titling}
@@ -96,11 +93,13 @@
 
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
-\newtheorem*{problem}{\problemname}
+\newtheorem{problem}{\problemname}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{lemma}{Lemma}[section]
+\newcommand{\lemmaautorefname}{Lemma}
 \newtheorem*{idea}{Idea}
 \newtheorem*{analysis}{Analysis}
+\newtheorem*{solution}{Solution}
 
 \newtheorem*{notation}{Notation}
 
@@ -112,14 +111,7 @@
 \newtheorem*{note}{Note}
 \newtheorem*{claim}{Claim}
 \newtheorem*{remark}{Remark}
-\newtheorem*{example}{Example}
-
-% Custom Solution proof-like environment 
-\newenvironment{solution}{%
-  \begin{proof}[Solution]%
-}{%
-  \end{proof}%
-}
+\newtheorem{example}{Example}[section]
 
 % Custom proof-like, subproof environment
 \newenvironment{subproof}[1][\proofname]{%
@@ -127,6 +119,7 @@
   \begin{proof}[#1]%
 }{%
   \end{proof}%
+  \renewcommand{\qedsymbol}{$\square$}%
 }
 
 % ----- Math stuff ------------------------------------------------------------
