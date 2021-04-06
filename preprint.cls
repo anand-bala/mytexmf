@@ -264,7 +264,7 @@ backend=biber,
 }
 
 
-\renewenvironment{abstract}{\section*{Acknowledgements}}{}
+\newenvironment{acknowledgements}{\section*{Acknowledgements}}{}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}

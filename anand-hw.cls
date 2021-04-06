@@ -22,7 +22,7 @@
 \RequirePackage{tasks}
 
 % Nice lists
-\RequirePackage{enumitem}
+\RequirePackage[inline]{enumitem}
 
 % Nice images, figures
 \RequirePackage{graphicx}
@@ -81,7 +81,7 @@
 \newcommand{\sectype}[1]{\def\@sectype{#1}}
 
 \titleformat{\section}{\large\bfseries}{\@sectype~\thesection.}{0.25em}{#1}[{\titlerule[0.8pt]}]
-\titleformat{\subsection}[runin]{\normalfont\bfseries}{Part~(\alph{subsection}).}{0.25em}{\textnormal{#1}}
+\titleformat{\subsection}{\normalfont\bfseries}{Part~(\alph{subsection}).}{0.25em}{\textbf{#1}}
 % \titleformat{\subsubsection}{\bfseries}{}{0pt}{\titlecap{#1}}
 %\titlespacing*{\section}{0pt}{0.5em}{0.3pt}
 %\titlespacing*{\subsection}{0pt}{0.35em}{0pt}
@@ -113,13 +113,14 @@
 \newtheorem*{remark}{Remark}
 \newtheorem{example}{Example}[section]
 
+\renewcommand{\qedsymbol}{$\blacksquare$}%
 % Custom proof-like, subproof environment
 \newenvironment{subproof}[1][\proofname]{%
-  \renewcommand{\qedsymbol}{$\blacksquare$}%
+  \renewcommand{\qedsymbol}{$\square$}%
   \begin{proof}[#1]%
 }{%
   \end{proof}%
-  \renewcommand{\qedsymbol}{$\square$}%
+  \renewcommand{\qedsymbol}{$\blacksquare$}%
 }
 
 % ----- Math stuff ------------------------------------------------------------
@@ -129,7 +130,7 @@
 
 \numberwithin{equation}{section}
 
-\tcbset{colback=yellow!10!white, colframe=red!50!black, 
+\tcbset{colback=yellow!10!white, colframe=red!50!black,
   highlight math style= {enhanced, colframe=red,colback=red!10!white,boxsep=0pt}
 }
 
@@ -137,7 +138,7 @@
   \empheq{align}
 }{\endempheq}
 
-\tcolorboxenvironment{emphalign}{colback=yellow!10!white, colframe=red!50!black, 
+\tcolorboxenvironment{emphalign}{colback=yellow!10!white, colframe=red!50!black,
   highlight math style= {enhanced,colframe=red,colback=red!10!white,boxsep=0pt}
 }
 
@@ -145,7 +146,7 @@
   \empheq{align*}
 }{\endempheq}
 
-\tcolorboxenvironment{emphalign*}{colback=yellow!10!white, colframe=red!50!black, 
+\tcolorboxenvironment{emphalign*}{colback=yellow!10!white, colframe=red!50!black,
   highlight math style= {enhanced,colframe=red,colback=red!10!white,boxsep=0pt}
 }
 % ----- For usage with pandoc converted documents -----------------------------
@@ -155,4 +156,3 @@
 
 % ----- END CLASS -------------------------------------------------------------
 \endinput
-

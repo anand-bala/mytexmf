@@ -1,7 +1,7 @@
 % vim: set ft=tex nospell
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{anand-notes}[2019/02/07 A LaTeX class to write notes]
+\ProvidesClass{anand-reviews}[2019/02/07 A LaTeX class to write reviews]
 
 % Conditionals
 \RequirePackage{ifthen}
