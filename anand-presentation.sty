@@ -1,0 +1,99 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{anand-presentation}[2022/05/19 Package containing modifications on Metropolis for Anand's presentations]
+
+\usepackage[scale=2]{ccicons}
+\usetheme[%
+	numbering=fraction,
+	progressbar=foot,
+	block=fill,
+]{metropolis}
+
+\definecolor{usccardinal}{RGB}{157,34,53}
+\definecolor{uscgold}{RGB}{255,199,44}
+\definecolor{uscdarkgray}{RGB}{119,119,119}
+\definecolor{usclightgray}{RGB}{204,204,204}
+\definecolor{crimsonred}{RGB}{153,0,0} % Neurtal red, good for dark or light bg
+
+\setbeamercolor{normal text}{%
+	fg=black,
+	bg=black!2,
+}
+\setbeamercolor{alerted text}{%
+	fg=crimsonred,
+}
+\setbeamercolor{example text}{%
+	fg=black,
+}
+\setbeamercolor{palette primary}{%
+	use=normal text,
+	fg=normal text.bg,
+	bg=crimsonred,
+}
+\setbeamerfont{caption}{size=\scriptsize}
+\setbeamerfont{footnote}{size=\tiny}
+% \setbeamertemplate{section in toc}[sections numbered]
+% \setbeamertemplate{subsection in toc}[subsections numbered]
+
+
+\setbeamertemplate{section page}{
+	\vspace{5\baselineskip}
+	\centering
+	\begin{minipage}{22em}
+		\raggedright
+		\usebeamercolor[fg]{section title}
+		\usebeamerfont{section title}
+		\insertsectionhead\\[-1ex]
+		\usebeamertemplate*{progress bar in section page}
+		\\[1ex]
+		{
+		\usebeamercolor[fg]{subsection title}%
+		\usebeamerfont{subsection title}%
+		\setcounter{tocdepth}{2}
+		\tableofcontents[sectionstyle=hide/hide,subsectionstyle=show/show/hide]
+		}
+	\end{minipage}
+	\par
+	\vspace{\baselineskip}
+}
+
+\setlength{\metropolis@frametitle@padding}{1.6ex}% <- default 2.2 ex
+
+\setlength{\metropolis@progressinheadfoot@linewidth}{1.5pt}
+\setbeamerfont{page number in head/foot}{size=\tiny}
+% \setbeamertemplate{frame footer}{\insertshorttitle}
+% \setbeamercolor{footline}{%
+%   use=normal text,
+%   fg=normal text.fg,
+%   bg=usclightgray,
+% }
+\setbeamertemplate{footline}{%
+	\begin{beamercolorbox}[wd=\textwidth, sep=1ex]{footline}% <- default 3ex
+		\usebeamerfont{page number in head/foot}%
+		\usebeamertemplate*{frame footer}
+		\hfill%
+		\usebeamertemplate*{frame numbering}
+	\end{beamercolorbox}
+	%
+	\usebeamertemplate*{progress bar in head/foot}%
+}
+
+\setbeamerfont{block body}{size=\small}
+
+\usepackage{appendixnumberbeamer}
+
+% Redefine footnote command to always be at the bottom of frame
+\let\oldfootnote=\footnote
+\DeclareDocumentCommand\footnote{ o m } {%
+	\IfNoValueTF {#1} {%
+		\oldfootnote[frame]{#2}%
+	}{%
+		\oldfootnote[frame,#1]{#2}%
+	}%
+}
+\newcommand\blankfootnote[1]{%
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+\renewcommand{\thefootnote}{[\arabic{footnote}]}
