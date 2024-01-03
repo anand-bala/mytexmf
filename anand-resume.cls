@@ -1,6 +1,12 @@
 \ProvidesClass{anand-resume}[2022/09/28 Anand's custom resume class]
 \NeedsTeXFormat{LaTeX2e}
 
+\RequirePackage{etoolbox} % Needed for nice control
+\RequirePackage{ifthen} % Needed for conditionals
+
+\newbool{my@usesbiblatex}
+
+\DeclareOption{biblatex}{\booltrue{my@usesbiblatex}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}}
 \ProcessOptions\relax
 \LoadClass{extarticle}
@@ -10,8 +16,6 @@
 \RequirePackage{csquotes}  % Set language options
 \RequirePackage{microtype}
 
-\RequirePackage{etoolbox} % Needed for nice control
-\RequirePackage{ifthen} % Needed for conditionals
 \RequirePackage{geometry} % Needed for page geometry
 \RequirePackage{booktabs}
 \RequirePackage{array} % Needed for nice alignments
@@ -132,66 +136,60 @@
 % Custom Bibliography stuff
 % -----------------------------------------------------------------------------
 
-\RequirePackage[
-  style=ieee,
-  backend=biber,
-  natbib=true,
-  sorting=ymdnt,
-  % maxnames=1,
-  % minnames=1,
-]{biblatex}
+\ifbool{my@usesbiblatex}{%
+  \RequirePackage{biblatex}
+  % Commands for Bibliography
+  \newcommand*{\cvcategory}[1]{%
+    \forcsvlist{\addtocategory{#1}}}
 
-% Commands for Bibliography
-\newcommand*{\cvcategory}[1]{%
-  \forcsvlist{\addtocategory{#1}}}
+  % \defbibcheck{annoteposter}{\iffieldequalstr{annotation}{Poster}{}{\skipentry}}
 
-% \defbibcheck{annoteposter}{\iffieldequalstr{annotation}{Poster}{}{\skipentry}}
+  \DefineBibliographyStrings{english}{%
+    inpreparation	   = {in prep\adddot}, }
 
-\DefineBibliographyStrings{english}{%
-  inpreparation	   = {in prep\adddot}, }
-
-\DeclareLabeldate{%
-  \field{date}
-  \field{eventdate}
-  \field{origdate}
-  \field{urldate}
-  \field{pubstate}   % <-- NEW
-  \literal{nodate}
-}
-
-\DeclareFieldFormat{labelnumberwidth}{\mkbibbold{$\bullet$}}
-
-% Custom Sorting 
-
-\DeclareSortingTemplate{ymdnt}{%
-  \sort{\field{presort}}
-  \sort[final]{\field{sortkey}}
-  \sort[direction=descending]{%
-    \field{sortyear}
-    \field{year}
-    \literal{9999}
+  \DeclareLabeldate{%
+    \field{date}
+    \field{eventdate}
+    \field{origdate}
+    \field{urldate}
+    \field{pubstate}   % <-- NEW
+    \literal{nodate}
   }
-  \sort[direction=descending]{%
-    \field[padside=left,padwidth=2,padchar=0]{month}
-    \literal{99}
+
+  \DeclareFieldFormat{labelnumberwidth}{\mkbibbold{$\bullet$}}
+
+  % Custom Sorting 
+  \DeclareSortingTemplate{ymdnt}{%
+    \sort{\field{presort}}
+    \sort[final]{\field{sortkey}}
+    \sort[direction=descending]{%
+      \field{sortyear}
+      \field{year}
+      \literal{9999}
+    }
+    \sort[direction=descending]{%
+      \field[padside=left,padwidth=2,padchar=0]{month}
+      \literal{99}
+    }
+    \sort[direction=descending]{%
+      \field[padside=left,padwidth=2,padchar=0]{day}
+      \literal{99}
+    }
+    \sort{%
+      \field{sortname}
+      \field{author}
+      \field{editor}
+      \field{translator}
+      \field{sorttitle}
+      \field{title}
+    }
+    \sort{%
+      \field{sorttitle}
+    }
+    \sort{%
+      \field[padside=left,padwidth=4,padchar=0]{volume}
+      \literal{9999}
+    }
   }
-  \sort[direction=descending]{%
-    \field[padside=left,padwidth=2,padchar=0]{day}
-    \literal{99}
-  }
-  \sort{%
-    \field{sortname}
-    \field{author}
-    \field{editor}
-    \field{translator}
-    \field{sorttitle}
-    \field{title}
-  }
-  \sort{%
-    \field{sorttitle}
-  }
-  \sort{%
-    \field[padside=left,padwidth=4,padchar=0]{volume}
-    \literal{9999}
-  }
+}{
 }
