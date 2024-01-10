@@ -1,19 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{presentation-biblatex}[2022/05/19 Package containing modifications on biblatex for Anand's presentations]
 
-\usepackage[%
-	backend=biber,
-	citestyle=verbose,
-	bibstyle=numeric,
-	citetracker=true,
-	trackfloats=true,
-	sorting=none,
-	citepages=suppress,
-	doi=false,url=false,
-	maxcitenames=2,
-]{biblatex}
-\renewcommand*{\bibfont}{\scriptsize}
-
 % \def\@makefnmark{[\@thefnmark]}
 % \def\@makefntext#1{%
 %   \def\insertfootnotetext{\quad#1}%
@@ -23,14 +10,14 @@
 \renewcommand{\bibfootnotewrapper}[1]{\bibsentence\quad #1 \addperiod}
 
 \renewbibmacro*{cite:full}{%
-	\usebibmacro{cite:full:citepages}%
-	\printtext[bibhypertarget]{%
-		\usedriver
-		{\DeclareNameAlias{sortname}{default}}
-		{\thefield{entrytype}}}%
-	%  \usebibmacro{shorthandintro}}% DELETED
-	\usebibmacro{shorthandintro}% NEW
-	\csxdef{cbx@\thefield{entrykey}@footnotenumber}{\the\value{footnote}}% NEW
+  \usebibmacro{cite:full:citepages}%
+  \printtext[bibhypertarget]{%
+    \usedriver
+    {\DeclareNameAlias{sortname}{default}}
+    {\thefield{entrytype}}}%
+  %  \usebibmacro{shorthandintro}}% DELETED
+  \usebibmacro{shorthandintro}% NEW
+  \csxdef{cbx@\thefield{entrykey}@footnotenumber}{\the\value{footnote}}% NEW
 }% NEW
 
 \DeclareFieldFormat{prefixnumber}{}
@@ -38,27 +25,27 @@
 
 \renewbibmacro*{url+urldate}{}
 \newbibmacro{string+doiurl}[1]{%
-	\iffieldundef{doi}{%
-		\iffieldundef{url}{%
-			#1%
-		}{%
-			\href{\thefield{url}}{#1}%
-		}%
-	}{%
-		\href{http://dx.doi.org/\thefield{doi}}{#1}%
-	}%
+  \iffieldundef{doi}{%
+    \iffieldundef{url}{%
+      #1%
+    }{%
+      \href{\thefield{url}}{#1}%
+    }%
+  }{%
+    \href{http://dx.doi.org/\thefield{doi}}{#1}%
+  }%
 }
 \DeclareFieldFormat{title}{\usebibmacro{string+doiurl}{\mkbibemph{#1}}}
 \DeclareFieldFormat[article,incollection]{title}{\usebibmacro{string+doiurl}{\mkbibquote{#1}}}
 \AtBeginBibliography{
-	\DeclareFieldFormat{title}{\mkbibemph{#1}}
-	\DeclareFieldFormat[article,incollection]{title}{\mkbibquote{#1}}
-	\settoggle{bbx:url}{true}
-	\settoggle{bbx:doi}{true}
-	\renewbibmacro*{url+urldate}{%
-		\usebibmacro{url}%
-		\iffieldundef{urlyear}
-		{}
-		{\setunit*{\addspace}%
-			\usebibmacro{urldate}}}
+  \DeclareFieldFormat{title}{\mkbibemph{#1}}
+  \DeclareFieldFormat[article,incollection]{title}{\mkbibquote{#1}}
+  \settoggle{bbx:url}{true}
+  \settoggle{bbx:doi}{true}
+  \renewbibmacro*{url+urldate}{%
+    \usebibmacro{url}%
+    \iffieldundef{urlyear}
+    {}
+    {\setunit*{\addspace}%
+      \usebibmacro{urldate}}}
 }

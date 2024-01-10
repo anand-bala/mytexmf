@@ -34,7 +34,7 @@
 
 % Nice lists
 \RequirePackage{enumerate}
-\RequirePackage{enumitem}
+% \RequirePackage{enumitem}
 
 % Nice images, figures
 \RequirePackage{graphicx}
@@ -49,15 +49,6 @@
 \RequirePackage{float}
 \RequirePackage{booktabs}
 
-% Links
-\RequirePackage[
-  colorlinks,
-  linkcolor=black,
-  citecolor=black,
-  urlcolor=black,
-  filecolor=black,
-  bookmarks=false
-]{hyperref}
 
 % ----- Custom Commands -------------------------------------------------------
 
@@ -67,13 +58,13 @@
 % ----- Header & Page Setup ---------------------------------------------------
 \RequirePackage[margin=1in]{geometry}
 
-\RequirePackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot[R]{\rightmark}
-\fancyfoot[L]{\thepage}
-
-\fancyhead[C]{\@Title}
+% \RequirePackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \fancyfoot[R]{\rightmark}
+% \fancyfoot[L]{\thepage}
+%
+% \fancyhead[C]{\@Title}
 
 
 \RequirePackage{titling} 

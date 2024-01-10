@@ -115,7 +115,6 @@
     pdfauthor = {\theauthor},
   }
   \global\let\@title\@empty
-  \global\let\@date\@empty
 }
 
 % Format Sections
