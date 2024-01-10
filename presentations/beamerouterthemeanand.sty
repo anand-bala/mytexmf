@@ -1,0 +1,51 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerouterthemeanand}[2024/01/05 Anand's Beamer outer theme]
+
+\mode<presentation>
+
+\RequirePackage{etoolbox}
+\RequirePackage{ifthen}
+
+\def\insertnavigation#1{%
+  \vbox{{%
+        \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}%
+        \beamer@xpos=0\relax%
+        \beamer@ypos=1\relax%
+        \beamer@ypos@offset=0\relax%
+        % \def\sectionentry##1##2##3##4##5{}%
+        \hbox to #1{\hskip.3cm\setbox\beamer@sectionbox=\hbox{\kern1sp}%
+          \ht\beamer@sectionbox=1.875ex%
+          \dp\beamer@sectionbox=0.75ex%
+          \hskip-1.875ex plus-1fill%
+          \global\beamer@section@min@dim\z@
+          \dohead%
+          \beamer@section@set@min@width
+          \box\beamer@sectionbox\hfil\hskip.3cm\hskip0pt plus1filll}%
+      }}}
+
+\useoutertheme[subsection=false]{miniframes}
+
+\setbeamertemplate{page number in head/foot}[appendixframenumber]
+
+\setbeamercolor{footline}{parent=palette tertiary}
+\setbeamercolor{page number in head/foot}{parent=palette tertiary}
+
+\defbeamertemplate*{footline}{progressbar}
+{%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footline}%
+      \usebeamertemplate*{progressbar in footline}
+      \hfill%
+      \usebeamercolor[fg]{page number in head/foot}
+      \usebeamerfont{page number in head/foot}
+      \usebeamertemplate*{page number in head/foot}
+    \end{beamercolorbox}
+  }%
+  \vskip0pt%
+}
+
+\setbeamertemplate{footline}[progressbar]
+\setbeamertemplate{headline}[mini frames]
+
+\mode<all>
+\endinput

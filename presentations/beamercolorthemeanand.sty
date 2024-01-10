@@ -1,0 +1,33 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemeanand}[2024/01/05 Anand's Beamer color theme]
+
+\mode<presentation>
+
+\RequirePackage{etoolbox}
+\RequirePackage{ifthen}
+\RequirePackage{xcolor}
+
+\definecolor{usccardinal}{RGB}{157,34,53}
+\definecolor{uscgold}{RGB}{255,199,44}
+\definecolor{uscdarkgray}{RGB}{119,119,119}
+\definecolor{usclightgray}{RGB}{204,204,204}
+\definecolor{crimsonred}{RGB}{153,0,0} % Neurtal red, good for dark or light bg
+
+\setbeamercolor{section in toc}{parent=palette primary}
+\setbeamercolor{item}{parent=palette primary}
+\setbeamercolor{alerted text}{fg=crimsonred}
+\setbeamercolor*{palette primary}{fg=crimsonred!60!black,bg=gray!30!white}
+\setbeamercolor*{palette secondary}{fg=crimsonred!70!black,bg=gray!15!white}
+\setbeamercolor*{palette tertiary}{bg=crimsonred!80!black,fg=gray!10!white}
+\setbeamercolor*{palette quaternary}{fg=crimsonred,bg=gray!5!white}
+
+%\setbeamercolor*{titlelike}{parent=palette primary}
+\setbeamercolor{titlelike}{parent=palette primary,fg=crimsonred}
+\setbeamercolor{frametitle}{bg=gray!10!white}
+\setbeamercolor{frametitle right}{bg=gray!60!white}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\mode<all>
+\endinput

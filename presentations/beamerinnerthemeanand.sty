@@ -1,0 +1,186 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemeanand}[2024/01/05 Anand's Beamer inner theme]
+
+\mode<presentation>
+
+\RequirePackage{etoolbox}
+\RequirePackage{ifthen}
+
+% Some options for this inner theme
+%
+% Flag to create a section page
+\newbool{anandtheme@sectionpage}
+% Flag to create a subsection page
+\newbool{anandtheme@subsectionpage}
+
+\DeclareOptionBeamer{sectionpage}{\booltrue{anandtheme@sectionpage}}
+\DeclareOptionBeamer{subsectionpage}{\booltrue{anandtheme@subsectionpage}}
+\ProcessOptionsBeamer
+
+% An inner theme installs templates that dictate how the following elements
+% are typeset:
+%
+% - Title and part pages.
+% - Itemize environments.
+% - Enumerate environments.
+% - Description environments.
+% - Block environments.
+% - Theorem and proof environments.
+% - Figures and tables.
+% - Footnotes.
+% - Bibliography entries.
+
+\useinnertheme{circles}
+
+\setbeamertemplate{navigation symbols}{}%
+
+% Title Page
+% ----------
+%
+% Template for the title page. Each element is only typset if it is defined
+% by the user. If `\subtitle` is empty, for example, it won't leave a blank
+% space on the title slide.
+\setbeamertemplate{title page}{
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+    \vfill%
+    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+    % Beamer's definition of `\insertauthor` is always nonempty, so we have
+    % to test another macro initialized by `\author{...}` to see if the user
+    % has defined an author. This solution was suggested by Enrico Gregorio in
+    % https://tex.stackexchange.com/questions/241306/
+    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+    \vfill
+    \vspace*{1mm}
+  \end{minipage}
+}
+
+% Normal people should use |\maketitle| or |\titlepage| instead of using the
+% |title page| beamer template directly. Beamer already defines these macros,
+% but we patch them here to make the title page |[plain]| by default, remove
+% |\@thanks|, and ensure the title frame number doesn't count.
+%
+\def\maketitle{%
+  \ifbeamer@inframe
+    \titlepage
+  \else
+    \frame[plain,noframenumbering]{\titlepage}
+  \fi
+}
+\def\titlepage{%
+  \usebeamertemplate{title page}
+}
+
+% Set the title graphic in a zero-height box, so it doesn't change the
+% position of other elements.
+\setbeamertemplate{title graphic}{
+  \vbox to 0pt {
+      \vspace*{2em}
+      \inserttitlegraphic%
+    }%
+  \nointerlineskip%
+}
+
+% Set the title on the title page.
+\setbeamertemplate{title}{
+  \raggedright%
+  \linespread{1.0}%
+  \inserttitle%
+  \par%
+  \vspace*{0.5em}
+}
+
+% Set the subtitle on the title page.
+\setbeamertemplate{subtitle}{
+  \raggedright%
+  \insertsubtitle%
+  \par%
+  \vspace*{0.5em}
+}
+
+%   Set the author on the title page.
+\setbeamertemplate{author}{
+  \vspace*{2em}
+  \insertauthor%
+  \par%
+  \vspace*{0.25em}
+}
+
+% Set the date on the title page.
+\setbeamertemplate{date}{
+  \insertdate%
+  \par%
+}
+
+% Set the institute on the title page.
+\setbeamertemplate{institute}{
+  \vspace*{3mm}
+  \insertinstitute%
+  \par%
+}
+
+\defbeamertemplate*{subsection in toc}{arrows}
+{\leavevmode\leftskip=2.1em\rlap{\hskip-1em\inserttocsubsectionnumber.}\inserttocsubsection\par}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[arrows]
+
+% Set the sectionpage template
+\setbeamertemplate{section page}{
+  \centering
+  \begin{columns}[c]
+    \begin{column}{0.49\textwidth}
+      \usebeamercolor[fg]{section title}
+      \usebeamerfont{section title}
+      \insertsectionhead
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \usebeamercolor[fg]{subsection title}%
+      \usebeamerfont{subsection title}%
+
+      \ifx\insertsubsectionhead\@empty
+        \tableofcontents[sectionstyle=hide, subsectionstyle=show/show/hide]
+      \else
+        \tableofcontents[sectionstyle=hide, subsectionstyle=show/shaded/hide]
+      \fi
+    \end{column}
+  \end{columns}
+}
+
+\setbeamertemplate{subsection page}{%
+  \usebeamertemplate*{section page}
+}
+
+\ifbool{anandtheme@sectionpage}{%
+  \AtBeginSection{
+    \ifbeamer@inframe
+      \sectionpage
+    \else
+      \frame[plain,c,noframenumbering]{\sectionpage}
+    \fi
+  }
+}{%
+  \AtBeginSection{
+    % intentionally empty
+  }
+}
+
+\ifbool{anandtheme@subsectionpage}{%
+  \AtBeginSubsection{
+    \ifbeamer@inframe
+      \subsectionpage
+    \else
+      \frame[plain,c,noframenumbering]{\subsectionpage}
+    \fi
+  }
+}{%
+  \AtBeginSubsection{
+    % intentionally empty
+  }
+}
+
+\mode<all>
+\endinput

@@ -1,0 +1,21 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeanand}[2024/01/05 Anand's Beamer theme]
+
+\mode<presentation>
+
+\RequirePackage{etoolbox}
+\RequirePackage{ifthen}
+
+% Some options for this theme
+
+\DeclareOptionBeamer{sectionpage}{\PassOptionsToPackage{sectionpage}{beamerinnerthemeanand}}
+\DeclareOptionBeamer{subsectionpage}{\PassOptionsToPackage{subsectionpage}{beamerinnerthemeanand}}
+\ProcessOptionsBeamer
+
+\useinnertheme{anand}
+\useoutertheme{anand}
+\usecolortheme{anand}
+\usefonttheme{anand}
+
+\mode<all>
+\endinput

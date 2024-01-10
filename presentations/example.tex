@@ -1,0 +1,181 @@
+% arara: lualatex: { interaction: errorstopmode, synctex: yes }
+% arara: biber if exists('bib')
+% arara: lualatex: { interaction: errorstopmode, synctex: yes }
+% arara: --> if changed('bbl')
+% arara: lualatex: { interaction: errorstopmode, synctex: yes }
+% arara: --> while found('log', 'undefined references') || missing('pdf')
+
+\documentclass[
+aspectratio=169,
+11pt,
+c,
+compress,
+hyperref={
+  colorlinks=false,
+}]{beamer}
+
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+
+\usepackage{iftex}
+
+\usepackage[english]{babel}
+\ifPDFTeX
+\usepackage[latin1]{inputenc}
+\fi
+\usepackage[T1]{fontenc}
+
+\usetheme[sectionpage,subsectionpage]{anand}
+
+\title[Short Paper Title] % (optional, use only with long paper titles)
+{Presentation Title}
+
+\subtitle
+{Presentation Subtitle} % (optional)
+
+\author[Author, Another] % (optional, use only with lots of authors)
+{F.~Author\inst{1} \and S.~Another\inst{2}}
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+{
+  \inst{1}%
+  Department of Computer Science\\
+  University of Somewhere
+  \and
+  \inst{2}%
+  Department of Theoretical Philosophy\\
+  University of Elsewhere}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[Short Occasion] % (optional)
+{Date / Occasion}
+
+\subject{Talks}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}[plain,noframenumbering]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+% Since this a solution template for a generic talk, very little can
+% be said about how it should be structured. However, the talk length
+% of between 15min and 45min and the theme suggest that you stick to
+% the following rules:  
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+\section{Introduction}
+
+\subsection[Short First Subsection Name]{First Subsection Name}
+
+\begin{frame}{Make Titles Informative. Use Uppercase Letters.}{Subtitles are optional.}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+  \begin{itemize}
+    \item
+          Use \texttt{itemize} a lot.
+    \item
+          Use very short sentences or short phrases.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Make Titles Informative.}
+
+  You can create overlays\dots
+  \begin{itemize}
+    \item using the \texttt{pause} command:
+          \begin{itemize}
+            \item
+                  First item.
+                  \pause
+            \item
+                  Second item.
+          \end{itemize}
+    \item
+          using overlay specifications:
+          \begin{itemize}
+            \item<3->
+                  First item.
+            \item<4->
+                  Second item.
+          \end{itemize}
+    \item
+          using the general \texttt{uncover} command:
+          \begin{itemize}
+            \uncover<5->{
+            \item
+                  First item.}
+                  \uncover<6->{
+            \item
+                  Second item.}
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Second Subsection}
+
+\begin{frame}{Make Titles Informative.}
+\end{frame}
+
+\begin{frame}{Make Titles Informative.}
+\end{frame}
+
+\section*{Summary}
+
+\begin{frame}{Summary}
+
+  % Keep the summary *very short*.
+  \begin{itemize}
+    \item
+          The \alert{first main message} of your talk in one or two lines.
+    \item
+          The \alert{second main message} of your talk in one or two lines.
+    \item
+          Perhaps a \alert{third message}, but not more than that.
+  \end{itemize}
+
+  % The following outlook is optional.
+  \vskip0pt plus.5fill
+  \begin{itemize}
+    \item
+          Outlook
+          \begin{itemize}
+            \item
+                  Something you haven't solved.
+            \item
+                  Something else you haven't solved.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\appendix
+
+\begin{frame}[c]
+  \frametitle{Appendix}
+
+\end{frame}
+\end{document}
