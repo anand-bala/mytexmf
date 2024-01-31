@@ -30,6 +30,7 @@
 % - Footnotes.
 % - Bibliography entries.
 
+\useinnertheme{default}
 \useinnertheme{circles}
 
 \setbeamertemplate{navigation symbols}{}%
@@ -43,6 +44,7 @@
 \setbeamertemplate{title page}{
   \begin{minipage}[b][\paperheight]{\textwidth}
     \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+    \usebeamertemplate*{titlepage background}
     \vfill%
     \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
     \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
@@ -57,6 +59,8 @@
     \vspace*{1mm}
   \end{minipage}
 }
+
+\defbeamertemplate*{titlepage background}{default}{}
 
 % Normal people should use |\maketitle| or |\titlepage| instead of using the
 % |title page| beamer template directly. Beamer already defines these macros,
@@ -78,6 +82,7 @@
 % position of other elements.
 \setbeamertemplate{title graphic}{
   \vbox to 0pt {
+      \flushright
       \vspace*{2em}
       \inserttitlegraphic%
     }%
@@ -154,33 +159,41 @@
   \usebeamertemplate*{section page}
 }
 
-\ifbool{anandtheme@sectionpage}{%
-  \AtBeginSection{
+\AtBeginSection{
+  \ifanandtheme@sectionpage
     \ifbeamer@inframe
       \sectionpage
     \else
       \frame[plain,c,noframenumbering]{\sectionpage}
     \fi
-  }
-}{%
-  \AtBeginSection{
+  \else
     % intentionally empty
-  }
+  \fi
 }
 
-\ifbool{anandtheme@subsectionpage}{%
-  \AtBeginSubsection{
+\AtBeginSubsection{
+  \ifanandtheme@subsectionpage
     \ifbeamer@inframe
       \subsectionpage
     \else
       \frame[plain,c,noframenumbering]{\subsectionpage}
     \fi
-  }
-}{%
-  \AtBeginSubsection{
+  \else
     % intentionally empty
-  }
+  \fi
 }
+
+\setbeamercolor{bibliography entry author}{use=normal text,fg=normal text.fg}
+\setbeamercolor{bibliography entry title}{use=normal text,fg=normal text.fg}
+\setbeamercolor{bibliography entry location}{use=normal text,fg=normal text.fg}
+\setbeamercolor{bibliography entry note}{use=normal text,fg=normal text.fg}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+\setbeamercolor{block title alerted}{parent=palette tertiary}
+\setbeamercolor{block body alerted}{parent=palette secondary}
+
+\setbeamercolor{block title example}{bg=uscgold,fg=crimsonred}
+\setbeamercolor{block body example}{bg=uscgold!25,fg=usccardinal}
 
 \mode<all>
 \endinput

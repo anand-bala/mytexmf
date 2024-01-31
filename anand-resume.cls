@@ -142,6 +142,42 @@
     \forcsvlist{\addtocategory{#1}}}
 
   % \defbibcheck{annoteposter}{\iffieldequalstr{annotation}{Poster}{}{\skipentry}}
+  \RequirePackage{xpatch}
+
+  % Commands to make a name bold
+  \def\makenamesetup{%
+    \def\bibnamedelima{~}%
+    \def\bibnamedelimb{ }%
+    \def\bibnamedelimc{ }%
+    \def\bibnamedelimd{ }%
+    \def\bibnamedelimi{ }%
+    \def\bibinitperiod{.}%
+    \def\bibinitdelim{~}%
+    \def\bibinithyphendelim{.-}}
+  \newcommand*{\makename}[3]{\begingroup\makenamesetup\xdef#1{#2, #3}\endgroup}
+
+  \newbibmacro*{name:bold}[2]{%
+    \makename{\currname}{#1}{#2}%
+    \makename{\findname}{\lastname}{\firstname}%
+    \makename{\findinit}{\lastname}{\firstinit}%
+    \ifboolexpr{ test {\ifdefequal{\currname}{\findname}}
+      or test {\ifdefequal{\currname}{\findinit}} }{\bfseries}{}}
+
+  \newcommand*{\boldname}[3]{%
+    \def\lastname{#1}%
+    \def\firstname{#2}%
+    \def\firstinit{#3}}
+  \boldname{}{}{}
+
+  \xpretobibmacro{name:family}{\begingroup\usebibmacro{name:bold}{#1}{#2}}{}{}
+  \xpretobibmacro{name:given-family}{\begingroup\usebibmacro{name:bold}{#1}{#2}}{}{}
+  \xpretobibmacro{name:family-given}{\begingroup\usebibmacro{name:bold}{#1}{#2}}{}{}
+  \xpretobibmacro{name:delim}{\begingroup\normalfont}{}{}
+
+  \xapptobibmacro{name:family}{\endgroup}{}{}
+  \xapptobibmacro{name:given-family}{\endgroup}{}{}
+  \xapptobibmacro{name:family-given}{\endgroup}{}{}
+  \xapptobibmacro{name:delim}{\endgroup}{}{}
 
   \DefineBibliographyStrings{english}{%
     inpreparation	   = {in prep\adddot}, }

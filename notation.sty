@@ -1,9 +1,35 @@
-\ProvidesPackage{notation}[2020/06/17 A package with common notation used in Anand's papers]
+\ProvidesPackage{notation}[2020/06/17 A package with common notation used in Anand's
+  papers]
 
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{stmaryrd}
+\RequirePackage{bm}
 \RequirePackage{mathtools}
+\RequirePackage{etoolbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notation within this paper
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General Notations used by Anand
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% STL Syntax
+\DeclareMathOperator{\Alw}{\mathsf{G}}
+\DeclareMathOperator{\Ev}{\mathsf{F}}
+\newcommand{\Unt}{\mathbin{\mathsf{U}}}
+\newcommand{\Since}{\mathbin{\mathsf{S}}}
+
+% For semirings
+\newcommand{\eplus}{\bar{0}}
+\newcommand{\etimes}{\bar{1}}
+\DeclareMathOperator*{\OPlus}{\mathlarger{\oplus}}
+\DeclareMathOperator*{\OTimes}{\mathlarger{\otimes}}
 
 % Vector notation
-\newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
+% \newcommand{\vect}[1]{\bm{#1}}
 
 % -- Theory of computation stuff
 \newcommand{\NP}{\(\mathcal{NP}\)}
@@ -16,24 +42,32 @@
 \providecommand\given{}
 % can be useful to refer to this outside \Set
 \newcommand\SetSymbol[1][]{%
-\nonscript\:#1\vert\allowbreak\nonscript\:\mathopen{}}
+  \nonscript\:#1\vert\allowbreak\nonscript\:\mathopen{}}
 
 % -- Tuple Notation
-\DeclarePairedDelimiterX\Tuple[1]\langle\rangle{%
+\DeclarePairedDelimiterX\Tuple[1]\lparen\rparen{%
   \renewcommand\given{\SetSymbol[\delimsize]}#1}
 
 % -- Set notation (from https://www.ctan.org/pkg/mathtools)
 \DeclarePairedDelimiterX\Set[1]\{\}{%
-  \renewcommand\given{\SetSymbol[\delimsize]}#1}
+\renewcommand\given{\SetSymbol[\delimsize]}#1}
 
 % -- Automatic lparen rparen sizing with \of
 \DeclarePairedDelimiterX\of[1]\lparen\rparen{%
-    \renewcommand\given{\SetSymbol[\delimsize]}#1}
+  \renewcommand\given{\SetSymbol[\delimsize]}#1}
+
+% -- Automatic lbrack rbrack sizing with \Bof
+\DeclarePairedDelimiterX\Bof[1]\lbrack\rbrack{%
+  \renewcommand\given{\SetSymbol[\delimsize]}#1}
 
 % -- Probability
 \DeclareMathOperator{\Dist}{\mathcal{D}}
 \DeclareMathOperator{\Prob}{\mathrm{Pr\,}}
 \DeclareMathOperator{\PExp}{\mathbb{E\,}}
+\DeclareMathOperator{\Exp}{\mathbb{E\,}}
+\let\Pr\relax
+\DeclareMathOperator{\Pr}{\mathrm{Pr\,}}
+\DeclareMathOperator{\Supp}{\mathsf{supp}}
 
 % -- Operators
 \DeclareMathOperator*{\argmax}{argmax}
@@ -50,7 +84,6 @@
 % -- Absolute and Norms
 \DeclarePairedDelimiterX\abs[1]\lvert\rvert{\ifblank{#1}{\:\cdot\:}{#1}}
 \DeclarePairedDelimiterX\norm[1]\lVert\rVert{\ifblank{#1}{\:\cdot\:}{#1}}
-
 
 % -- Numeric Sets
 \newcommand{\Naturals}{\mathbb{N}}
@@ -71,6 +104,7 @@
 \newcommand{\Oe}{\mathbb{O}}
 \newcommand{\Pe}{\mathbb{P}}
 \newcommand{\Qe}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}%
 \renewcommand{\Re}{\mathbb{R}}
 \newcommand{\Se}{\mathbb{S}}
 \newcommand{\Te}{\mathbb{T}}

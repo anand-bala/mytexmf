@@ -6,24 +6,43 @@
 \RequirePackage{etoolbox}
 \RequirePackage{ifthen}
 
-\def\insertnavigation#1{%
-  \vbox{{%
-        \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}%
-        \beamer@xpos=0\relax%
-        \beamer@ypos=1\relax%
-        \beamer@ypos@offset=0\relax%
-        % \def\sectionentry##1##2##3##4##5{}%
-        \hbox to #1{\hskip.3cm\setbox\beamer@sectionbox=\hbox{\kern1sp}%
-          \ht\beamer@sectionbox=1.875ex%
-          \dp\beamer@sectionbox=0.75ex%
-          \hskip-1.875ex plus-1fill%
-          \global\beamer@section@min@dim\z@
-          \dohead%
-          \beamer@section@set@min@width
-          \box\beamer@sectionbox\hfil\hskip.3cm\hskip0pt plus1filll}%
-      }}}
+% Some options for this ouer theme
+%
+% Flag to turn on miniframe navigations
+\newbool{anandtheme@useminiframes}
 
-\useoutertheme[subsection=false]{miniframes}
+\DeclareOptionBeamer{miniframe}{\booltrue{anandtheme@useminiframes}}
+\ProcessOptionsBeamer
+
+\ifanandtheme@useminiframes
+  \useoutertheme[subsection=false]{miniframes}
+  \def\insertnavigation#1{%
+    \vbox{{%
+          \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}%
+          \beamer@xpos=0\relax%
+          \beamer@ypos=1\relax%
+          \beamer@ypos@offset=0\relax%
+          \hbox to #1{\hskip.3cm\setbox\beamer@sectionbox=\hbox{\kern1sp}%
+            \ht\beamer@sectionbox=1.875ex%
+            \dp\beamer@sectionbox=0.75ex%
+            \hskip-1.875ex plus-1fill%
+            \global\beamer@section@min@dim\z@
+            \dohead%
+            \beamer@section@set@min@width
+            \box\beamer@sectionbox\hfil\hskip.3cm\hskip0pt plus1filll}%
+        }}}
+
+  \let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry%
+  \def\beamer@writeslidentry@miniframesoff{%
+    \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+    {%else
+      % removed \addtocontents commands
+      \clearpage\beamer@notesactions%
+    }
+  }
+  \newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+  \newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\fi
 
 \setbeamertemplate{page number in head/foot}[appendixframenumber]
 
@@ -45,7 +64,6 @@
 }
 
 \setbeamertemplate{footline}[progressbar]
-\setbeamertemplate{headline}[mini frames]
 
 \mode<all>
 \endinput
