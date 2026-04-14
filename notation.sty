@@ -2,11 +2,12 @@
   papers]
 
 \RequirePackage{amsmath}
-\RequirePackage{amssymb}
+\@ifclassloaded{acmart}{}{\RequirePackage{amssymb}}
 \RequirePackage{stmaryrd}
 \RequirePackage{bm}
 \RequirePackage{mathtools}
 \RequirePackage{etoolbox}
+\RequirePackage{xspace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Notation within this paper
