@@ -31,7 +31,7 @@
 % - Bibliography entries.
 
 \useinnertheme{default}
-\useinnertheme{circles}
+% \useinnertheme{circles}
 
 \setbeamertemplate{navigation symbols}{}%
 
@@ -42,22 +42,22 @@
 % by the user. If `\subtitle` is empty, for example, it won't leave a blank
 % space on the title slide.
 \setbeamertemplate{title page}{
-  \begin{minipage}[b][\paperheight]{\textwidth}
-    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
-    \usebeamertemplate*{titlepage background}
-    \vfill%
-    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
-    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
-    % Beamer's definition of `\insertauthor` is always nonempty, so we have
-    % to test another macro initialized by `\author{...}` to see if the user
-    % has defined an author. This solution was suggested by Enrico Gregorio in
-    % https://tex.stackexchange.com/questions/241306/
-    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
-    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
-    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
-    \vfill
-    \vspace*{1mm}
-  \end{minipage}
+	\begin{minipage}[b][\paperheight]{\textwidth}
+		\ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+		\usebeamertemplate*{titlepage background}
+		\vfill%
+		\ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+		\ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+		% Beamer's definition of `\insertauthor` is always nonempty, so we have
+		% to test another macro initialized by `\author{...}` to see if the user
+		% has defined an author. This solution was suggested by Enrico Gregorio in
+		% https://tex.stackexchange.com/questions/241306/
+		\ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+		\ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+		\ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+		\vfill
+		\vspace*{1mm}
+	\end{minipage}
 }
 
 \defbeamertemplate*{titlepage background}{default}{}
@@ -68,126 +68,158 @@
 % |\@thanks|, and ensure the title frame number doesn't count.
 %
 \def\maketitle{%
-  \ifbeamer@inframe
-    \titlepage
-  \else
-    \frame[plain,noframenumbering]{\titlepage}
-  \fi
+	\ifbeamer@inframe
+		\titlepage
+	\else
+		\frame[plain,noframenumbering]{\titlepage}
+	\fi
 }
 \def\titlepage{%
-  \usebeamertemplate{title page}
+	\usebeamertemplate{title page}
 }
 
 % Set the title graphic in a zero-height box, so it doesn't change the
 % position of other elements.
 \setbeamertemplate{title graphic}{
-  \vbox to 0pt {
-      \flushright
-      \vspace*{2em}
-      \inserttitlegraphic%
-    }%
-  \nointerlineskip%
+	\vbox to 0pt {
+			\flushright
+			\vspace*{2em}
+			\inserttitlegraphic%
+		}%
+	\nointerlineskip%
 }
 
 % Set the title on the title page.
 \setbeamertemplate{title}{
-  \raggedright%
-  \linespread{1.0}%
-  \inserttitle%
-  \par%
-  \vspace*{0.5em}
+	\raggedright%
+	\linespread{1.0}%
+	\inserttitle%
+	\par%
+	\vspace*{0.5em}
 }
 
 % Set the subtitle on the title page.
 \setbeamertemplate{subtitle}{
-  \raggedright%
-  \insertsubtitle%
-  \par%
-  \vspace*{0.5em}
+	\raggedright%
+	\insertsubtitle%
+	\par%
+	\vspace*{0.5em}
 }
 
 %   Set the author on the title page.
 \setbeamertemplate{author}{
-  \vspace*{2em}
-  \insertauthor%
-  \par%
-  \vspace*{0.25em}
+	\vspace*{2em}
+	\insertauthor%
+	\par%
+	\vspace*{0.25em}
 }
 
 % Set the date on the title page.
 \setbeamertemplate{date}{
-  \insertdate%
-  \par%
+	\insertdate%
+	\par%
 }
 
 % Set the institute on the title page.
 \setbeamertemplate{institute}{
-  \vspace*{3mm}
-  \insertinstitute%
-  \par%
+	\vspace*{3mm}
+	\insertinstitute%
+	\par%
 }
 
-\defbeamertemplate*{subsection in toc}{arrows}
+\defbeamertemplate*{subsection in toc}{notfullnumber}
 {\leavevmode\leftskip=2.1em\rlap{\hskip-1em\inserttocsubsectionnumber.}\inserttocsubsection\par}
 
 \setbeamertemplate{section in toc}[sections numbered]
-\setbeamertemplate{subsection in toc}[arrows]
+\setbeamertemplate{subsection in toc}[notfullnumber]
 
-% Set the sectionpage template
-\setbeamertemplate{section page}{
-  \centering
-  \begin{columns}[c]
-    \begin{column}{0.49\textwidth}
-      \usebeamercolor[fg]{section title}
-      \usebeamerfont{section title}
-      \insertsectionhead
-    \end{column}
-    \begin{column}{0.49\textwidth}
-      \usebeamercolor[fg]{subsection title}%
-      \usebeamerfont{subsection title}%
+\defbeamertemplate*{section page}{horizontalsplit}{%
+	\centering
+	\begin{columns}[c,onlytextwidth]
+		\begin{column}[T]{0.49\textwidth}
+			\centering
+			\usebeamercolor[fg]{section title}
+			\usebeamerfont{section title}
+			\insertsectionhead
+		\end{column}
+		\begin{column}[T]{0.49\textwidth}
+			\centering
+			\usebeamercolor[fg]{subsection title}%
+			\usebeamerfont{subsection title}%
 
-      \ifx\insertsubsectionhead\@empty
-        \tableofcontents[sectionstyle=hide, subsectionstyle=show/show/hide]
-      \else
-        \tableofcontents[sectionstyle=hide, subsectionstyle=show/shaded/hide]
-      \fi
-    \end{column}
-  \end{columns}
+			\ifx\insertsubsectionhead\@empty
+				\tableofcontents[sectionstyle=hide, subsectionstyle=show/show/hide]
+			\else
+				\tableofcontents[sectionstyle=hide, subsectionstyle=show/shaded/hide]
+			\fi
+		\end{column}
+	\end{columns}
+}
+\defbeamertemplate*{section page}{split}{%
+	\vfill
+	\bgroup
+	\usebeamercolor[fg]{section title}
+	\usebeamerfont{section title}
+	\insertsectionhead
+	\egroup
+	\vspace{2em}
+	\bgroup
+	\usebeamercolor[fg]{subsection title}%
+	\usebeamerfont{subsection title}%
+
+	\ifx\insertsubsectionhead\@empty
+		\tableofcontents[sectionstyle=hide, subsectionstyle=show/show/hide]
+	\else
+		\tableofcontents[sectionstyle=hide, subsectionstyle=show/shaded/hide]
+	\fi
+	\egroup
 }
 
-\setbeamertemplate{subsection page}{%
-  \usebeamertemplate*{section page}
+\setbeamertemplate{section page}[horizontalsplit]
+\setbeamertemplate{subsection page}{\usebeamertemplate{section page}}
+
+\newcommand{\insertsectionpage}{
+	\ifbeamer@inframe
+		\sectionpage
+	\else
+		\frame[plain,c,noframenumbering]{\sectionpage}
+	\fi
 }
 
-\AtBeginSection{
-  \ifanandtheme@sectionpage
-    \ifbeamer@inframe
-      \sectionpage
-    \else
-      \frame[plain,c,noframenumbering]{\sectionpage}
-    \fi
-  \else
-    % intentionally empty
-  \fi
+\newcommand{\insertsubsectionpage}{
+	\ifbeamer@inframe
+		\subsectionpage
+	\else
+		\frame[plain,c,noframenumbering]{\subsectionpage}
+	\fi
 }
 
-\AtBeginSubsection{
-  \ifanandtheme@subsectionpage
-    \ifbeamer@inframe
-      \subsectionpage
-    \else
-      \frame[plain,c,noframenumbering]{\subsectionpage}
-    \fi
-  \else
-    % intentionally empty
-  \fi
+\AtBeginSection[]{
+	\ifanandtheme@sectionpage
+		\insertsectionpage
+	\else
+		% intentionally empty
+	\fi
 }
+
+\AtBeginSubsection[]{
+	\ifanandtheme@subsectionpage
+		\insertsubsectionpage
+	\else
+		% intentionally empty
+	\fi
+}
+
+\setbeamertemplate{itemize items}[circle]
 
 \setbeamercolor{bibliography entry author}{use=normal text,fg=normal text.fg}
 \setbeamercolor{bibliography entry title}{use=normal text,fg=normal text.fg}
 \setbeamercolor{bibliography entry location}{use=normal text,fg=normal text.fg}
 \setbeamercolor{bibliography entry note}{use=normal text,fg=normal text.fg}
-\setbeamertemplate{bibliography item}{\insertbiblabel}
+% \setbeamertemplate{bibliography item}[text]
+
+\setbeamercolor{block title}{parent=palette tertiary}
+\setbeamercolor{block body}{parent=palette secondary}
 
 \setbeamercolor{block title alerted}{parent=palette tertiary}
 \setbeamercolor{block body alerted}{parent=palette secondary}
