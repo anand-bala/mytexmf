@@ -1,0 +1,121 @@
+\ProvidesPackage{stqlnotation}[2020/06/12 Notation for SQTL]
+
+\RequirePackage{mathtools}
+\RequirePackage{stmaryrd}
+\RequirePackage{amssymb}
+
+\RequirePackage{graphicx}
+
+% Convenience commands
+\newcommand{\stql}{STQL}
+\newcommand{\paststql}{Past-STQL}
+\newcommand{\NaN}{\mathrm{NaN}}
+
+\newcommand{\IoU}{\mathrm{IoU}}
+
+% Declare some new symbols for this
+\newcommand\bsquare{\raisebox{-1.5pt}{\scalebox{1.25}{$\square$}}}
+\newcommand\blozenge{\raisebox{-1.5pt}{\scalebox{1.25}{$\lozenge$}}}
+
+\newcommand\dcirc{{%
+      \setbox0\hbox{\(\bigcirc\)}%
+      \rlap{\hbox to \wd0{\hss--\hss}}\box0
+    }}
+
+\newcommand\dsquare{{%
+      \setbox0\hbox{$\bsquare$}%
+      \rlap{\hbox to \wd0{\hss--\hss}}\box0
+    }}
+
+\newcommand\dlozenge{{%
+      \setbox0\hbox{$\blozenge$}%
+      \rlap{\hbox to \wd0{\hss-\hss}}\box0
+    }}
+
+\newcommand\smallforall{\scalebox{0.7}{$\forall$}}
+\newcommand\smallexists{\scalebox{0.7}{$\exists$}}
+
+\newcommand\boxedforall{{%
+      \setbox0\hbox{$\bsquare$}%
+      \rlap{\hbox to \wd0{\hss$\smallforall$\hss}}\box0
+    }}
+
+\newcommand\boxedexists{{%
+      \setbox0\hbox{$\bsquare$}%
+      \rlap{\hbox to \wd0{\hss$\smallexists$\hss}}\box0
+    }}
+
+% MTL subset
+\DeclareMathOperator{\Next}{\bigcirc}
+\DeclareMathOperator{\Alw}{\bsquare}
+\DeclareMathOperator{\Ev}{\blozenge}
+\newcommand{\Unt}{\mathbin{\mathbf{U}}}
+\newcommand{\Release}{\mathbin{\mathbf{R}}}
+\DeclareMathOperator{\Prev}{\dcirc}
+\DeclareMathOperator{\AlwP}{\dsquare}
+\DeclareMathOperator{\EvP}{\dlozenge}
+\newcommand{\Since}{\mathbin{\mathbf{S}}}
+\newcommand{\Back}{\mathbin{\mathbf{B}}}
+
+% Topological operators
+\DeclareMathOperator{\SpForall}{\boxedforall}
+\DeclareMathOperator{\SpExists}{\boxedexists}
+\newcommand{\Comp}[1]{\overline{#1}}
+\DeclareMathOperator{\Interior}{\mathbf{I}}
+\DeclareMathOperator{\Closure}{\mathbf{C}}
+
+% Spatio-temporal operators
+\DeclareMathOperator{\SpNext}{\bigcirc_s}
+\DeclareMathOperator{\SpAlw}{\bsquare_s}
+\DeclareMathOperator{\SpEv}{\blozenge_s}
+\newcommand{\SpUnt}{\mathbin{\mathcal{U}_s}}
+\newcommand{\SpRelease}{\mathbin{\mathcal{R}_s}}
+% Past time
+\DeclareMathOperator{\SpPrev}{\dcirc_s}
+\DeclareMathOperator{\SpAlwP}{\dsquare_s}
+\DeclareMathOperator{\SpEvP}{\dlozenge_s}
+\newcommand{\SpSince}{\mathbin{\mathcal{S}_s}}
+\newcommand{\SpBack}{\mathbin{\mathcal{B}_s}}
+
+% Frame References
+\newcommand{\CTIME}{\textsf{C\_TIME}}
+\newcommand{\CFRAME}{\textsf{C\_FRAME}}
+
+% Object ID
+\newcommand{\objid}{\mathsf{id}}
+% Class of ID
+\DeclareMathOperator{\idcls}{\mathsf{C}}
+\newcommand{\objcls}{\mathsf{class}}
+% Probability of ID
+\DeclareMathOperator{\idprob}{\mathsf{P}}
+\newcommand{\objprob}{\mathsf{prob}}
+% Bounding Boxes
+\DeclareMathOperator{\BBox}{\mathfrak{BB}}
+\newcommand{\objbbox}{\mathsf{bbox}}
+\newcommand{\objxmin}{\mathsf{xmin}}
+\newcommand{\objxmax}{\mathsf{xmax}}
+\newcommand{\objymin}{\mathsf{ymin}}
+\newcommand{\objymax}{\mathsf{ymax}}
+
+% Area, ED, Lat, Lon operators
+\DeclareMathOperator{\Area}{\mathsf{Area}}
+\DeclareMathOperator{\ED}{\mathsf{ED}}
+\DeclareMathOperator{\Lat}{\mathsf{Lat}}
+\DeclareMathOperator{\Lon}{\mathsf{Lon}}
+
+% Margin references
+\newcommand{\CRT}{\mathrm{CRT}}
+\newcommand{\LM}{\mathsf{LM}}
+\newcommand{\RM}{\mathsf{RM}}
+\newcommand{\TM}{\mathsf{TM}}
+\newcommand{\BM}{\mathsf{BM}}
+\newcommand{\CT}{\mathsf{CT}}
+
+% Horizon
+\DeclareMathOperator{\Horizon}{\mathsf{hrz}}
+\DeclareMathOperator{\History}{\mathsf{hst}}
+
+% Semantics
+\DeclarePairedDelimiter\Quality\llbracket\rrbracket%
+\DeclareMathOperator\SpEval{\mathfrak{U}}
+
